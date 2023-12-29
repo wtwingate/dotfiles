@@ -69,6 +69,13 @@ require("lazy").setup({
 vim.o.number = true
 vim.o.relativenumber = true
 
+-- Enable cursor line
+vim.o.cursorline = true
+
+-- Set scroll off
+vim.o.scrolloff = 8
+vim.o.sidescrolloff = 8
+
 -- Set tabs and indentation
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
