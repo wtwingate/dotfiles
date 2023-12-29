@@ -82,6 +82,14 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = false
 
+-- Enable search highlighting
+vim.o.hlsearch = true
+
+-- Set search behavior
+vim.o.incsearch = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 -- Save undo history
 vim.o.undofile = true
 
