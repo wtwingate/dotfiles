@@ -22,4 +22,5 @@ set noexpandtab
 set termguicolors
 
 " Set default color scheme
-colorscheme retrobox
+let g:gruvbox_italic=1
+colorscheme gruvbox

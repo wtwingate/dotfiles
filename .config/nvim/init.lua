@@ -55,12 +55,13 @@ require("lazy").setup({
 		}
 	},
 
-	-- Catppuccin color scheme
+	-- Color Scheme
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000
-	},
+		"ellisonleao/gruvbox.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {}
+	}
 })
 
 -- [[ NEOVIM OPTIONS ]] --
@@ -88,7 +89,7 @@ vim.o.undofile = true
 vim.o.termguicolors = true
 
 -- Set default color scheme
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("gruvbox")
 
 -- [[ NEOVIM KEYMAPS ]] --
 
