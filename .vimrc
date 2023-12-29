@@ -13,10 +13,6 @@ set backupdir=~/.vim/backup//
 set undofile
 set undodir=~/.vim/undo//
 
-" Enable line numbers
-set number
-set relativenumber
-
 " Set tab and indentation
 set tabstop=4
 set shiftwidth=4
