@@ -61,7 +61,12 @@ require("lazy").setup({
 		name = "catppuccin",
 		lazy = false,
 		priority = 1000,
-		opts = {}
+		opts = {
+			background = {
+				light = "latte",
+				dark = "macchiato",
+			}
+		}
 	}
 })
 
