@@ -29,7 +29,6 @@ require("lazy").setup({
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"folke/neodev.nvim",
-			{ "j-hui/fidget.nvim", opts = {} },
 		},
 	},
 
@@ -46,12 +45,6 @@ require("lazy").setup({
 				build = "make install_jsregexp",
 			},
 		},
-	},
-
-	-- Code Formatting
-	{
-		"stevearc/conform.nvim",
-		opts = {},
 	},
 
 	-- Language Parsers
@@ -90,7 +83,6 @@ require("lazy").setup({
 	-- Status Line
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			require("lualine").setup({
 				options = {
@@ -117,7 +109,6 @@ require("lazy").setup({
 	},
 
 	"tpope/vim-fugitive",
-	"tpope/vim-rhubarb",
 	"tpope/vim-surround",
 })
 
@@ -189,6 +180,12 @@ lspconfig.clangd.setup({
 lspconfig.cssls.setup({
 	capabilities = capabilities,
 })
+lspconfig.emmet_language_server.setup({
+	capabilities = capabilities,
+})
+lspconfig.html.setup({
+	capabilities = capabilities,
+})
 lspconfig.lua_ls.setup({
 	capabilities = capabilities,
 	settings = {
@@ -216,8 +213,8 @@ vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist)
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
-		-- Enable completion triggered by <C-X><C-O>
-		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+		-- NOTE: omnifunc must be disabled when using nvim-cmp
+		-- vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 		local opts = { buffer = ev.buf }
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -234,12 +231,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, opts)
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-		-- vim.keymap.set("n", "<Leader>f", function()
-		-- 	vim.lsp.buf.format { async = true }
-		-- end, opts)
 		vim.keymap.set("n", "<Leader>f", function()
-			require("conform").format({ async = true, lsp_fallback = true })
-		end)
+			vim.lsp.buf.format { async = true }
+		end, opts)
 	end,
 })
 
@@ -287,19 +281,6 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer" },
 	}),
-})
-
--- [[ CONFORM ]]
-
-require("conform").setup({
-	formatters_by_ft = {
-		css = { { "prettierd", "prettier" } },
-		html = { { "prettierd", "prettier" } },
-		javascript = { { "prettierd", "prettier" } },
-		json = { { "prettierd", "prettier" } },
-		lua = { "stylua" },
-		markdown = { { "prettierd", "prettier" } },
-	},
 })
 
 -- [[ TREESITTER ]]
