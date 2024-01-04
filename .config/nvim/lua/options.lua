@@ -16,6 +16,11 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = false
 
+-- Set line wrap and break
+vim.o.wrap = false
+vim.o.linebreak = true
+vim.o.breakindent = true
+
 -- Enable search highlighting
 vim.o.hlsearch = true
 
