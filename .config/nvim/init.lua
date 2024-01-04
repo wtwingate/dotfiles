@@ -29,6 +29,7 @@ require("lazy").setup({
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"folke/neodev.nvim",
+			{ "j-hui/fidget.nvim", opts = {} },
 		},
 	},
 
@@ -83,6 +84,9 @@ require("lazy").setup({
 	-- Status Line
 	{
 		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 		config = function()
 			require("lualine").setup({
 				options = {
@@ -108,8 +112,16 @@ require("lazy").setup({
 		opts = {},
 	},
 
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
+
 	"tpope/vim-fugitive",
 	"tpope/vim-surround",
+	"tpope/vim-vinegar",
 })
 
 -- [[ NEOVIM OPTIONS ]]
