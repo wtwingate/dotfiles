@@ -36,6 +36,21 @@ require("lazy").setup({
 		}
 	},
 
+	-- Autocompletion
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"saadparwaiz1/cmp_luasnip",
+			{
+				"L3MON4D3/LuaSnip",
+				version = "v2.*",
+				build = "make install_jsregexp"
+			}
+		},
+	},
+
 	-- Language Parsers
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -124,10 +139,16 @@ require("mason-lspconfig").setup({
 })
 require("neodev").setup({})
 
+-- Add additional capabilities with nvim-cmp
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 -- Set up language servers
 local lspconfig = require("lspconfig")
-lspconfig.clangd.setup({})
+lspconfig.clangd.setup({
+	capabilities = capabilities
+})
 lspconfig.lua_ls.setup({
+	capabilities = capabilities,
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -136,8 +157,12 @@ lspconfig.lua_ls.setup({
 		}
 	}
 })
-lspconfig.pyright.setup({})
-lspconfig.tsserver.setup({})
+lspconfig.pyright.setup({
+	capabilities = capabilities
+})
+lspconfig.tsserver.setup({
+	capabilities = capabilities
+})
 
 -- Global mappings
 vim.keymap.set("n", "<Leader>e", vim.diagnostic.open_float)
@@ -172,6 +197,53 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, opts)
 	end,
 })
+
+-- [[ NVIM-CMP ]] --
+
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered()
+	},
+	mapping = cmp.mapping.preset.insert({
+		["<C-B>"] = cmp.mapping.scroll_docs(-4),
+		["<C-F>"] = cmp.mapping.scroll_docs(4),
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-E>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+	}),
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "buffer" },
+	})
+})
+
 
 -- [[ TREESITTER ]] --
 
