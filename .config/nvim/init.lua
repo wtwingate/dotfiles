@@ -3,7 +3,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- [[ PLUGIN MANAGER ]] --
+-- [[ PLUGIN MANAGER ]]
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -18,13 +18,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ DOWNLOAD PLUGINS ]] --
+-- [[ DOWNLOAD PLUGINS ]]
 
 require("lazy").setup({
-
-	-- Essential tpope plugins
-	"tpope/vim-fugitive",
-	"tpope/vim-surround",
 
 	-- Language Servers
 	{
@@ -32,11 +28,12 @@ require("lazy").setup({
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"folke/neodev.nvim"
-		}
+			"folke/neodev.nvim",
+			{ "j-hui/fidget.nvim", opts = {} },
+		},
 	},
 
-	-- Autocompletion
+	-- Code Autocompletion
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -46,15 +43,21 @@ require("lazy").setup({
 			{
 				"L3MON4D3/LuaSnip",
 				version = "v2.*",
-				build = "make install_jsregexp"
-			}
+				build = "make install_jsregexp",
+			},
 		},
+	},
+
+	-- Code Formatting
+	{
+		"stevearc/conform.nvim",
+		opts = {},
 	},
 
 	-- Language Parsers
 	{
 		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate"
+		build = ":TSUpdate",
 	},
 
 	-- Fuzzy Finder
@@ -65,9 +68,9 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make"
+				build = "make",
 			},
-		}
+		},
 	},
 
 	-- Color Scheme
@@ -80,12 +83,45 @@ require("lazy").setup({
 			background = {
 				light = "latte",
 				dark = "macchiato",
-			}
-		}
-	}
+			},
+		},
+	},
+
+	-- Status Line
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("lualine").setup({
+				options = {
+					icons_enabled = false,
+					theme = "catppuccin",
+					component_separators = "|",
+					section_separators = "",
+				},
+			})
+		end,
+	},
+
+	-- Various and sundry
+	{
+		"numToStr/Comment.nvim",
+		opts = {},
+		lazy = false,
+	},
+
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
+	},
+
+	"tpope/vim-fugitive",
+	"tpope/vim-rhubarb",
+	"tpope/vim-surround",
 })
 
--- [[ NEOVIM OPTIONS ]] --
+-- [[ NEOVIM OPTIONS ]]
 
 -- Enable line numbers
 vim.o.number = true
@@ -120,22 +156,25 @@ vim.o.termguicolors = true
 -- Set default color scheme
 vim.cmd.colorscheme("catppuccin")
 
--- [[ NEOVIM KEYMAPS ]] --
+-- [[ NEOVIM KEYMAPS ]]
 
 -- Remove default keymaps for <Space>
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
--- [[ LSPCONFIG ]] --
+-- [[ LSPCONFIG ]]
 
 -- Download language servers
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"clangd",
+		"cssls",
+		"emmet_language_server",
+		"html",
 		"lua_ls",
 		"pyright",
 		"tsserver",
-	}
+	},
 })
 require("neodev").setup({})
 
@@ -145,23 +184,26 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- Set up language servers
 local lspconfig = require("lspconfig")
 lspconfig.clangd.setup({
-	capabilities = capabilities
+	capabilities = capabilities,
+})
+lspconfig.cssls.setup({
+	capabilities = capabilities,
 })
 lspconfig.lua_ls.setup({
 	capabilities = capabilities,
 	settings = {
 		Lua = {
 			diagnostics = {
-				disable = { "missing-fields" }
-			}
-		}
-	}
+				disable = { "missing-fields" },
+			},
+		},
+	},
 })
 lspconfig.pyright.setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 lspconfig.tsserver.setup({
-	capabilities = capabilities
+	capabilities = capabilities,
 })
 
 -- Global mappings
@@ -192,13 +234,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "n", "v" }, "<Leader>ca", vim.lsp.buf.code_action, opts)
 		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+		-- vim.keymap.set("n", "<Leader>f", function()
+		-- 	vim.lsp.buf.format { async = true }
+		-- end, opts)
 		vim.keymap.set("n", "<Leader>f", function()
-			vim.lsp.buf.format { async = true }
-		end, opts)
+			require("conform").format({ async = true, lsp_fallback = true })
+		end)
 	end,
 })
 
--- [[ NVIM-CMP ]] --
+-- [[ NVIM-CMP ]]
 
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -206,11 +251,11 @@ cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
-		end
+		end,
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered()
+		documentation = cmp.config.window.bordered(),
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-B>"] = cmp.mapping.scroll_docs(-4),
@@ -241,11 +286,23 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
-	})
+	}),
 })
 
+-- [[ CONFORM ]]
 
--- [[ TREESITTER ]] --
+require("conform").setup({
+	formatters_by_ft = {
+		css = { { "prettierd", "prettier" } },
+		html = { { "prettierd", "prettier" } },
+		javascript = { { "prettierd", "prettier" } },
+		json = { { "prettierd", "prettier" } },
+		lua = { "stylua" },
+		markdown = { { "prettierd", "prettier" } },
+	},
+})
+
+-- [[ TREESITTER ]]
 
 require("nvim-treesitter.configs").setup({
 	ensure_installed = {
@@ -260,7 +317,7 @@ require("nvim-treesitter.configs").setup({
 		"typescript",
 		"vim",
 		"vimdoc",
-		"query"
+		"query",
 	},
 	sync_install = false,
 	auto_install = false,
@@ -272,7 +329,7 @@ require("nvim-treesitter.configs").setup({
 	},
 })
 
--- [[ TELESCOPE ]] --
+-- [[ TELESCOPE ]]
 
 require("telescope").setup({})
 require("telescope").load_extension("fzf")
