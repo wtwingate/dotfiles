@@ -52,6 +52,9 @@ return {
 		lspconfig.pyright.setup({
 			capabilities = capabilities,
 		})
+		lspconfig.ruby_ls.setup({
+			capabilities = capabilities,
+		})
 		lspconfig.tsserver.setup({
 			capabilities = capabilities,
 		})
