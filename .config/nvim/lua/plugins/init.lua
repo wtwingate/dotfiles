@@ -5,13 +5,13 @@ return {
 
 	{
 		"numToStr/Comment.nvim",
-		opts = {},
 		lazy = false,
+		opts = {},
 	},
 
 	{
 		"lewis6991/gitsigns.nvim",
-		config = true,
+		opts = {},
 	},
 
 	{
@@ -39,7 +39,7 @@ return {
 		config = function()
 			require("lualine").setup({
 				options = {
-					icons_enabled = false,
+					icons_enabled = true,
 					theme = "auto",
 					component_separators = "|",
 					section_separators = "",
