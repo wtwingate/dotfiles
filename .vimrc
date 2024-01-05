@@ -21,5 +21,6 @@ set noexpandtab
 " Use 24-bit terminal colors
 set termguicolors
 
-" Set default color scheme
-colorscheme retrobox
+" Use Gruvbox color scheme
+let g:gruvbox_italic=1
+colorscheme gruvbox
