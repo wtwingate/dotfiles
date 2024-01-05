@@ -8,18 +8,7 @@ return {
 	},
 	config = function()
 		require("mason").setup({})
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"clangd",
-				"cssls",
-				"emmet_language_server",
-				"html",
-				"lua_ls",
-				"pyright",
-				"ruby_ls",
-				"tsserver",
-			},
-		})
+		require("mason-lspconfig").setup({})
 		require("neodev").setup({})
 
 		-- Add additional capabilities with nvim-cmp
@@ -27,18 +16,21 @@ return {
 
 		-- Set up language servers
 		local lspconfig = require("lspconfig")
-		lspconfig.clangd.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.cssls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.emmet_language_server.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.html.setup({
-			capabilities = capabilities,
-		})
+		local servers = {
+			"clangd",
+			"cssls",
+			"emmet_language_server",
+			"html",
+			"lua_ls",
+			"pyright",
+			"ruby_ls",
+			"tsserver",
+		}
+		for _, server in ipairs(servers) do
+			lspconfig[server].setup({
+				capabilities = capabilities,
+			})
+		end
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 			settings = {
@@ -48,15 +40,6 @@ return {
 					},
 				},
 			},
-		})
-		lspconfig.pyright.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.ruby_ls.setup({
-			capabilities = capabilities,
-		})
-		lspconfig.tsserver.setup({
-			capabilities = capabilities,
 		})
 
 		-- Global mappings
