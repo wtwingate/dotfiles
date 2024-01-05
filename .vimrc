@@ -17,3 +17,9 @@ set undodir=~/.vim/undo//
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
+
+" Use 24-bit terminal colors
+set termguicolors
+
+" Set default color scheme
+colorscheme retrobox
