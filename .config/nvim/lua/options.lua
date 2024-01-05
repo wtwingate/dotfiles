@@ -36,4 +36,4 @@ vim.o.undofile = true
 vim.o.termguicolors = true
 
 -- Set default color scheme
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("rose-pine")

@@ -23,7 +23,7 @@ return {
 			"html",
 			"lua_ls",
 			"pyright",
-			"ruby_ls",
+			"solargraph",
 			"tsserver",
 		}
 		for _, server in ipairs(servers) do

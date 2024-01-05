@@ -21,15 +21,13 @@ return {
 	},
 
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
+		"rose-pine/neovim",
+		name = "rose-pine",
 		lazy = false,
 		priority = 1000,
 		opts = {
-			background = {
-				light = "latte",
-				dark = "macchiato",
-			},
+			variant = "auto",
+			dark_variant = "moon",
 		},
 	},
 
@@ -42,7 +40,7 @@ return {
 			require("lualine").setup({
 				options = {
 					icons_enabled = false,
-					theme = "catppuccin",
+					theme = "auto",
 					component_separators = "|",
 					section_separators = "",
 				},
