@@ -13,7 +13,17 @@ set backupdir=~/.vim/backup//
 set undofile
 set undodir=~/.vim/undo//
 
-" Set tab and indentation
+" Enable status line
+set laststatus=2
+
+" Enable line numbers
+set number
+set relativenumber
+
+" Enable cursor line
+set cursorline
+
+" Set tab stops and indentation
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
@@ -21,6 +31,5 @@ set noexpandtab
 " Use 24-bit terminal colors
 set termguicolors
 
-" Use Gruvbox color scheme
-let g:gruvbox_italic=1
-colorscheme gruvbox
+" Set default color scheme
+colorscheme retrobox
