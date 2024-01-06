@@ -33,6 +33,12 @@ set nowrap
 set linebreak
 set breakindent
 
+" Set search behavior
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
 " Use 24-bit terminal colors
 set termguicolors
 
