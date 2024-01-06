@@ -28,6 +28,11 @@ set tabstop=4
 set shiftwidth=4
 set noexpandtab
 
+" Set line wrap and break
+set nowrap
+set linebreak
+set breakindent
+
 " Use 24-bit terminal colors
 set termguicolors
 
