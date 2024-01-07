@@ -33,7 +33,7 @@ set nowrap
 set linebreak
 set breakindent
 
-" Set search behavior
+" Set search and highlight
 set hlsearch
 set incsearch
 set ignorecase
