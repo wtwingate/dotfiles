@@ -42,5 +42,8 @@ set smartcase
 " Use 24-bit terminal colors
 set termguicolors
 
+" Set default background color
+set background=dark
+
 " Set default color scheme
 colorscheme retrobox
