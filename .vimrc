@@ -21,7 +21,7 @@
 "       |__/|__/___/____/____/ /___/   |___/___/_/  /_/_/|_|\___/
 "
 "
-" Made with love by William Wingate
+" Configured with love by William Wingate
 "
 " Use the recommended default settings
 " See `:help defaults.vim-explained`
@@ -38,9 +38,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
-" Status line
-set laststatus=2
 
 " Save backup files
 set backup
