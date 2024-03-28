@@ -32,7 +32,6 @@ packadd! matchit
 
 " General options
 set number
-set relativenumber
 set nowrap
 set hlsearch
 set incsearch
