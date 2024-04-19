@@ -22,3 +22,10 @@ source $VIMRUNTIME/defaults.vim
 
 " Add packages
 packadd! matchit
+
+" Enable 24-bit terminal colors
+set termguicolors
+
+" Set default color scheme
+let g:gruvbox_italic=1
+colorscheme gruvbox
