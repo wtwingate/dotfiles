@@ -44,5 +44,4 @@ set smartcase
 set termguicolors
 
 " Set default color scheme
-let g:gruvbox_italic=1
-colorscheme gruvbox
+colorscheme retrobox
