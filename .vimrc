@@ -23,6 +23,23 @@ source $VIMRUNTIME/defaults.vim
 " Add packages
 packadd! matchit
 
+" Enable line numbers
+set number
+
+" Enable cursor line
+set cursorline
+
+" Disable line wrapping
+set nowrap
+
+" Enable search highlighting
+set hlsearch
+set incsearch
+
+" Set search options
+set ignorecase
+set smartcase
+
 " Enable 24-bit terminal colors
 set termguicolors
 
