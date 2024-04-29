@@ -5,10 +5,10 @@ set guifont=MonoLisa:h16
 func! ChangeBackground()
 	if (v:os_appearance == 1)
 		set background=dark
-		colorscheme catppuccin_mocha
+		colorscheme gruvbox
 	else
 		set background=light
-		colorscheme catppuccin_latte
+		colorscheme gruvbox
 	endif
 	" redraw!
 endfunc
