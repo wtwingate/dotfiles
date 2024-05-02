@@ -44,4 +44,4 @@ set smartcase
 set termguicolors
 
 " Set default color scheme
-colorscheme gruvbox
+colorscheme catppuccin_mocha
