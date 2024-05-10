@@ -25,6 +25,7 @@ packadd! matchit
 
 " Enable line numbers
 set number
+set relativenumber
 
 " Enable cursor line
 set cursorline
