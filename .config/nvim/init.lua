@@ -150,6 +150,17 @@ require("lazy").setup({
 		end
 	},
 
+	{
+		'nvim-lualine/lualine.nvim',
+		-- dependencies = { 'nvim-tree/nvim-web-devicons' }
+		opts = {
+			options = {
+				icons_enabled = false,
+				theme = "catppuccin",
+			}
+		}
+	},
+
 	"tpope/vim-fugitive",
 	"tpope/vim-surround"
 })
