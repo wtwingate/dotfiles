@@ -27,6 +27,7 @@ packadd! matchit
 call plug#begin()
 
 Plug 'fatih/vim-go'
+Plug 'junegunn/fzf'
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
