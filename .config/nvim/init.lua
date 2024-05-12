@@ -43,3 +43,28 @@ vim.opt.smartcase = true
 
 -- Save undo history
 vim.opt.undofile = true
+
+-- [[ Neovim Keymaps ]]
+
+-- Clear search highlighting
+vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlighting" })
+
+-- Navigate between split windows
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to left window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to bottom window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to top window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to right window" })
+
+-- [[ Neovim Autocommands ]]
+
+-- Create autocommand group
+local vimrc = vim.api.nvim_create_augroup("vimrc", { clear = true })
+
+-- Briefly highlight yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Briefly highlight yanked text",
+	group = vimrc,
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
