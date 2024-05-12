@@ -23,17 +23,6 @@ source $VIMRUNTIME/defaults.vim
 " Add packages
 packadd! matchit
 
-" Add plugins
-call plug#begin()
-
-Plug 'fatih/vim-go'
-Plug 'junegunn/fzf'
-Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-
-call plug#end()
-
 " Enable line numbers
 set number
 set relativenumber
@@ -52,9 +41,8 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Enable 24-bit terminal colors
+" Use 24-bit terminal colors
 set termguicolors
 
 " Set default color scheme
-let g:gruvbox_italic=1
-colorscheme gruvbox
+colorscheme retrobox
