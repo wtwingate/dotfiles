@@ -88,15 +88,14 @@ vim.opt.rtp:prepend(lazypath)
 -- Install and configure plugins
 require("lazy").setup({
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		lazy = false,
-		priority = 1000,
+		"neovim/nvim-lspconfig",
 		config = function()
-			vim.cmd.colorscheme("catppuccin")
+			require("lspconfig").clangd.setup({})
+			require("lspconfig").gopls.setup({})
+			require("lspconfig").pyright.setup({})
+			require("lspconfig").tsserver.setup({})
 		end
 	},
-
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -117,5 +116,16 @@ require("lazy").setup({
 				}
 			})
 		end
-	}
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd.colorscheme("catppuccin")
+		end
+	},
+	"tpope/vim-fugitive",
+	"tpope/vim-surround"
 })
