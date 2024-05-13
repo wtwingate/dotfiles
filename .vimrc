@@ -27,6 +27,9 @@ packadd! matchit
 set number
 set relativenumber
 
+" Enable cursor line
+set cursorline
+
 " Disable line wrapping
 set nowrap
 
@@ -37,3 +40,9 @@ set incsearch
 " Set search options
 set ignorecase
 set smartcase
+
+" Use 24-bit terminal colors
+set termguicolors
+
+" Set default color scheme
+colorscheme retrobox
