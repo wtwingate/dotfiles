@@ -89,7 +89,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim"
+		},
 		config = function()
+			require("mason").setup()
+			require("mason-lspconfig").setup()
 			require("lspconfig").clangd.setup({})
 			require("lspconfig").gopls.setup({})
 			require("lspconfig").pyright.setup({})
