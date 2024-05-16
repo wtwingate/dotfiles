@@ -28,10 +28,14 @@ vim.opt.relativenumber = true
 
 -- Set cursor options
 vim.opt.cursorline = true
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 4
 
 -- Disable line wrapping
 vim.opt.wrap = false
+
+-- Set line wrapping options
+vim.opt.linebreak = true
+vim.opt.breakindent = true
 
 -- Enable search highlighting
 vim.opt.hlsearch = true
