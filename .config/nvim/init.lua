@@ -91,10 +91,18 @@ require("lazy").setup({
 
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = {},
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
 		config = function()
+			require("mason").setup()
+			require("mason-lspconfig").setup()
 			local lspconfig = require("lspconfig")
+			lspconfig.clangd.setup({})
 			lspconfig.gopls.setup({})
+			lspconfig.pyright.setup({})
+			lspconfig.tsserver.setup({})
 		end,
 	},
 
