@@ -83,7 +83,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         "--branch=stable", -- latest stable release
         lazypath,
     })
-end
+end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- Install and configure plugins
@@ -94,6 +94,8 @@ require("lazy").setup({
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
+            { "folke/neodev.nvim", opts = {} },
+            { "j-hui/fidget.nvim", opts = {} },
         },
         config = function()
             require("mason").setup()
@@ -109,7 +111,13 @@ require("lazy").setup({
                 capabilities = capabilities
             })
             lspconfig.lua_ls.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        completion = { callSnippet = "Replace" },
+                        diagnostics = { disable = { "missing-fields" } },
+                    },
+                },
             })
             lspconfig.pyright.setup({
                 capabilities = capabilities
@@ -136,16 +144,19 @@ require("lazy").setup({
         config = function()
             local cmp = require("cmp")
             local luasnip = require("luasnip")
+
             cmp.setup({
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)
                     end
                 },
+
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
                 },
+
                 mapping = cmp.mapping.preset.insert({
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         if luasnip.expand_or_jumpable() then
@@ -154,6 +165,7 @@ require("lazy").setup({
                             fallback()
                         end
                     end, { "i", "s" }),
+
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
                         if luasnip.jumpable(-1) then
                             luasnip.jump(-1)
@@ -162,6 +174,7 @@ require("lazy").setup({
                         end
                     end, { "i", "s" }),
                 }),
+
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
@@ -191,11 +204,13 @@ require("lazy").setup({
                 sync_install = false,
                 auto_install = true,
                 ignore_install = {},
+
                 highlight = {
                     enable = true,
                     disable = {},
                     additional_vim_regex_highlighting = false,
                 },
+
                 indent = {
                     enable = true,
                     disable = {},
@@ -217,6 +232,7 @@ require("lazy").setup({
         config = function()
             require("telescope").setup({})
             require("telescope").load_extension("fzf")
+
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
             vim.keymap.set("n", "<Leader>fg", builtin.live_grep, {})
