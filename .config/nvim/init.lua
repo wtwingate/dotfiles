@@ -240,6 +240,31 @@ require("lazy").setup({
             vim.keymap.set("n", "<Leader>fh", builtin.help_tags, {})
         end
     },
+
+    {
+        "nvim-lualine/lualine.nvim",
+        -- dependencies = { "nvim-tree/nvim-web-devicons" }
+        config = function()
+            require("lualine").setup({
+                options = {
+                    icons_enabled = false,
+                    component_separators = "|",
+                    section_separators = "",
+                },
+            })
+        end,
+    },
+
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme("catppuccin")
+        end
+
+    },
 })
 
 -- Configured with love by William Wingate
