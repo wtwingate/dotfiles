@@ -60,9 +60,6 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to bottom window
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to right window" })
 
--- Open parent directory
-vim.keymap.set("n", "-", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
-
 -- [[ Neovim Autocommands ]]
 
 -- Create autocommand group
@@ -246,12 +243,6 @@ require("lazy").setup({
 	},
 
 	{
-		"stevearc/oil.nvim",
-		-- dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {},
-	},
-
-	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		dependencies = {
@@ -288,12 +279,6 @@ require("lazy").setup({
 	},
 
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {},
-	},
-
-	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = false,
@@ -303,13 +288,7 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = {},
-	},
-
 	"tpope/vim-fugitive",
-	"tpope/vim-surround",
 })
 
 -- Configured with love by William Wingate
