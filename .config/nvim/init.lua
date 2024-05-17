@@ -42,6 +42,10 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Configure split windows
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 -- Save undo history
 vim.opt.undofile = true
 
