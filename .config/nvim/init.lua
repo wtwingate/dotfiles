@@ -63,11 +63,11 @@ local vimrc = vim.api.nvim_create_augroup("vimrc", { clear = true })
 
 -- Briefly highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Briefly highlight yanked text",
-	group = vimrc,
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+    desc = "Briefly highlight yanked text",
+    group = vimrc,
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 -- [[ Neovim Plugins ]]
@@ -75,87 +75,156 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Install and bootstrap plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- Install and configure plugins
 require("lazy").setup({
 
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-		},
-		config = function()
-			require("mason").setup()
-			require("mason-lspconfig").setup()
-			local lspconfig = require("lspconfig")
-			lspconfig.clangd.setup({})
-			lspconfig.gopls.setup({})
-			lspconfig.pyright.setup({})
-			lspconfig.tsserver.setup({})
-		end,
-	},
+    {
+        "neovim/nvim-lspconfig",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+        },
+        config = function()
+            require("mason").setup()
+            require("mason-lspconfig").setup()
 
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		config = function()
-			require("nvim-treesitter.configs").setup({
-				ensure_installed = {
-					"bash",
-					"c",
-					"lua",
-					"markdown",
-					"markdown_inline",
-					"python",
-					"query",
-					"vim",
-					"vimdoc",
-				},
-				sync_install = false,
-				auto_install = true,
-				ignore_install = {},
-				highlight = {
-					enable = true,
-					disable = {},
-					additional_vim_regex_highlighting = false,
-				},
-				indent = {
-					enable = true,
-					disable = {},
-				},
-			})
-		end
-	},
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local lspconfig = require("lspconfig")
 
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-			},
-		},
-		config = function()
-			require("telescope").setup({})
-			require("telescope").load_extension("fzf")
-			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
-			vim.keymap.set("n", "<Leader>fg", builtin.live_grep, {})
-			vim.keymap.set("n", "<Leader>fb", builtin.buffers, {})
-			vim.keymap.set("n", "<Leader>fh", builtin.help_tags, {})
-		end
-	},
+            lspconfig.clangd.setup({
+                capabilities = capabilities
+            })
+            lspconfig.gopls.setup({
+                capabilities = capabilities
+            })
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities
+            })
+            lspconfig.pyright.setup({
+                capabilities = capabilities
+            })
+            lspconfig.tsserver.setup({
+                capabilities = capabilities
+            })
+        end,
+    },
+
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            {
+                "L3MON4D3/LuaSnip",
+                version = "v2.*",
+                build = "make install_jsregexp"
+            },
+            "saadparwaiz1/cmp_luasnip",
+        },
+        config = function()
+            local cmp = require("cmp")
+            local luasnip = require("luasnip")
+            cmp.setup({
+                snippet = {
+                    expand = function(args)
+                        luasnip.lsp_expand(args.body)
+                    end
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+                mapping = cmp.mapping.preset.insert({
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if luasnip.expand_or_jumpable() then
+                            luasnip.expand_or_jump()
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if luasnip.jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                }),
+                sources = cmp.config.sources({
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" },
+                    { name = "buffer" },
+                    { name = "path" },
+                }),
+            })
+        end,
+    },
+
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "bash",
+                    "c",
+                    "lua",
+                    "markdown",
+                    "markdown_inline",
+                    "python",
+                    "query",
+                    "vim",
+                    "vimdoc",
+                },
+                sync_install = false,
+                auto_install = true,
+                ignore_install = {},
+                highlight = {
+                    enable = true,
+                    disable = {},
+                    additional_vim_regex_highlighting = false,
+                },
+                indent = {
+                    enable = true,
+                    disable = {},
+                },
+            })
+        end
+    },
+
+    {
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
+            },
+        },
+        config = function()
+            require("telescope").setup({})
+            require("telescope").load_extension("fzf")
+            local builtin = require("telescope.builtin")
+            vim.keymap.set("n", "<Leader>ff", builtin.find_files, {})
+            vim.keymap.set("n", "<Leader>fg", builtin.live_grep, {})
+            vim.keymap.set("n", "<Leader>fb", builtin.buffers, {})
+            vim.keymap.set("n", "<Leader>fh", builtin.help_tags, {})
+        end
+    },
 })
+
+-- Configured with love by William Wingate
+-- vim: ts=4 sts=4 sw=4 et
