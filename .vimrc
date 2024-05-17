@@ -27,8 +27,10 @@ packadd! matchit
 set number
 set relativenumber
 
-" Enable cursor line
+" Set cursor options
 set cursorline
+set scrolloff=4
+set sidescrolloff=4
 
 " Disable line wrapping
 set nowrap
@@ -40,6 +42,10 @@ set incsearch
 " Set search options
 set ignorecase
 set smartcase
+
+" Configure split windows
+set splitright
+set splitbelow
 
 " Use 24-bit terminal colors
 set termguicolors
