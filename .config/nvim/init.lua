@@ -46,6 +46,9 @@ vim.opt.smartcase = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+-- Preview substitutions
+vim.opt.inccommand = "split"
+
 -- Save undo history
 vim.opt.undofile = true
 
@@ -60,15 +63,15 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to bottom window
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to top window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to right window" })
 
--- [[ Neovim Autocommands ]]
+-- Open parent directory
+vim.keymap.set("n", "-", "<Cmd>Oil<CR>", { desc = "Open parent directory" })
 
--- Create autocommand group
-local vimrc = vim.api.nvim_create_augroup("vimrc", { clear = true })
+-- [[ Neovim Autocommands ]]
 
 -- Briefly highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Briefly highlight yanked text",
-	group = vimrc,
+	group = vim.api.nvim_create_augroup("YankAugroup", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
 	end,
@@ -128,6 +131,21 @@ require("lazy").setup({
 			})
 			lspconfig.tsserver.setup({
 				capabilities = capabilities,
+			})
+
+			vim.api.nvim_create_autocmd("LspAttach", {
+				desc = "Set local keymaps when LSP attaches to buffer",
+				group = vim.api.nvim_create_augroup("LspAugroup", { clear = true }),
+				callback = function(event)
+					local map = function(keys, func, desc)
+						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+					end
+					map("gd", require("telescope.builtin").lsp_definitions, "Go to Definition")
+					map("gr", require("telescope.builtin").lsp_references, "Go to References")
+					map("gi", require("telescope.builtin").lsp_implementations, "Go to Implementation")
+					map("<Leader>rn", vim.lsp.buf.rename, "Rename")
+					map("<Leader>ca", vim.lsp.buf.code_action, "Code Action")
+				end,
 			})
 		end,
 	},
@@ -240,6 +258,12 @@ require("lazy").setup({
 				}
 			end,
 		},
+	},
+
+	{
+		"stevearc/oil.nvim",
+		-- dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
 	},
 
 	{
