@@ -141,9 +141,10 @@ require("lazy").setup({
 						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 					map("gd", require("telescope.builtin").lsp_definitions, "Go to Definition")
+					map("gt", require("telescope.builtin").lsp_type_definitions, "Go to Type Definition")
+					map("gi", require("telescope.builtin").lsp_implementations, "Go to Implementations")
 					map("gr", require("telescope.builtin").lsp_references, "Go to References")
-					map("gi", require("telescope.builtin").lsp_implementations, "Go to Implementation")
-					map("<Leader>rn", vim.lsp.buf.rename, "Rename")
+					map("<Leader>rn", vim.lsp.buf.rename, "Rename Symbol")
 					map("<Leader>ca", vim.lsp.buf.code_action, "Code Action")
 				end,
 			})
