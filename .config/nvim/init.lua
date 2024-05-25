@@ -93,4 +93,4 @@ vim.opt.rtp:prepend(lazypath)
 -- Install and configure plugins
 require("lazy").setup("plugins")
 
--- vim: ts=4 sts=4 sw=4 noet
+-- vim: ts=4 sts=4 sw=4 et

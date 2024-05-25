@@ -6,6 +6,7 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			{ "folke/neodev.nvim", opts = {} },
+			{ "j-hui/fidget.nvim", opts = {} },
 		},
 		config = function()
 			require("mason").setup()
@@ -197,12 +198,20 @@ return {
 
 	{
 		"nvim-lualine/lualine.nvim",
-		-- dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
 			options = {
 				icons_enabled = false,
+				component_separators = "|",
+				section_separators = "",
 			},
 		},
+	},
+
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
 	},
 
 	{
@@ -215,6 +224,7 @@ return {
 	},
 
 	"tpope/vim-fugitive",
+	"tpope/vim-surround",
 }
 
--- vim: ts=4 sts=4 sw=4 noet
+-- vim: ts=4 sts=4 sw=4 et
