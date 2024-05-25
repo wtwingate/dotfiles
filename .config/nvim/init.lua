@@ -67,11 +67,11 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to right window"
 
 -- Briefly highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Briefly highlight yanked text",
-	group = vim.api.nvim_create_augroup("YankAugroup", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+    desc = "Briefly highlight yanked text",
+    group = vim.api.nvim_create_augroup("YankAugroup", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
 })
 
 -- [[ Neovim Plugins ]]
@@ -79,14 +79,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Install and bootstrap plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
