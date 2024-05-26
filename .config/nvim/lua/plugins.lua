@@ -9,32 +9,39 @@ return {
             { "j-hui/fidget.nvim", opts = {} },
         },
         config = function()
+            local language_servers = {
+                "astro",
+                "clangd",
+                "cssls",
+                "gopls",
+                "html",
+                "lua_ls",
+                "pyright",
+                "rust_analyzer",
+                "tsserver",
+            }
+
             require("mason").setup()
-            require("mason-lspconfig").setup()
+            require("mason-lspconfig").setup({
+                ensure_installed = language_servers,
+            })
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
 
-            lspconfig.clangd.setup({
-                capabilities = capabilities,
-            })
-            lspconfig.gopls.setup({
-                capabilities = capabilities,
-            })
+            for _, server in ipairs(language_servers) do
+                lspconfig[server].setup({
+                    capabilities = capabilities,
+                })
+            end
+
             lspconfig.lua_ls.setup({
-                capabilities = capabilities,
                 settings = {
                     Lua = {
                         completion = { callSnippet = "Replace" },
                         diagnostics = { disable = { "missing-fields" } },
                     },
                 },
-            })
-            lspconfig.pyright.setup({
-                capabilities = capabilities,
-            })
-            lspconfig.tsserver.setup({
-                capabilities = capabilities,
             })
 
             vim.api.nvim_create_autocmd("LspAttach", {
@@ -150,10 +157,14 @@ return {
         "stevearc/conform.nvim",
         opts = {
             formatters_by_ft = {
+                css = { "prettier" },
                 go = { "goimports" },
+                html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
+                markdown = { "prettier" },
                 python = { "black" },
+                typescript = { "prettier" },
             },
             format_on_save = function(bufnr)
                 local disable_ft = { c = true, cpp = true }
