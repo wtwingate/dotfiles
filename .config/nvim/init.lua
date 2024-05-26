@@ -57,12 +57,6 @@ vim.opt.undofile = true
 -- Clear search highlighting
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlighting" })
 
--- Navigate between split windows
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to left window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to bottom window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to top window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to right window" })
-
 -- [[ Neovim Autocommands ]]
 
 -- Briefly highlight yanked text
