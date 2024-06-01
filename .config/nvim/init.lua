@@ -34,6 +34,10 @@ vim.opt.sidescrolloff = 4
 -- Disable line wrapping
 vim.opt.wrap = false
 
+-- Set line wrap options
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+
 -- Enable search highlighting
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
