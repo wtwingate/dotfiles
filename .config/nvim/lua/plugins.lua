@@ -11,13 +11,12 @@ return {
         config = function()
             local language_servers = {
                 "astro",
-                "basedpyright",
                 "clangd",
                 "cssls",
                 "gopls",
                 "html",
                 "lua_ls",
-                -- "pyright",
+                "pyright",
                 "rust_analyzer",
                 "tsserver",
             }
