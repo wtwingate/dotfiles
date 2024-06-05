@@ -177,15 +177,6 @@ return {
     },
 
     {
-        "stevearc/oil.nvim",
-        -- dependencies = { "nvim-tree/nvim-web-devicons" },
-        keys = {
-            { "-", "<Cmd>Oil<CR>", desc = "Open parent directory" },
-        },
-        opts = {},
-    },
-
-    {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = {
@@ -205,16 +196,6 @@ return {
             vim.keymap.set("n", "<Leader>fb", builtin.buffers, {})
             vim.keymap.set("n", "<Leader>fh", builtin.help_tags, {})
         end,
-    },
-
-    {
-        "nvim-lualine/lualine.nvim",
-        -- dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-            options = {
-                icons_enabled = false,
-            },
-        },
     },
 
     {
