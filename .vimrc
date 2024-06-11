@@ -50,5 +50,8 @@ set splitbelow
 " Use 24-bit terminal colors
 set termguicolors
 
+" Set dark background
+set background=dark
+
 " Set default color scheme
 colorscheme retrobox
