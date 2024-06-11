@@ -5,8 +5,6 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            { "folke/neodev.nvim", opts = {} },
-            { "j-hui/fidget.nvim", opts = {} },
         },
         config = function()
             local language_servers = {
@@ -151,29 +149,6 @@ return {
                 },
             })
         end,
-    },
-
-    {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                css = { "prettier" },
-                go = { "goimports" },
-                html = { "prettier" },
-                javascript = { "prettier" },
-                lua = { "stylua" },
-                markdown = { "prettier" },
-                python = { "black" },
-                typescript = { "prettier" },
-            },
-            format_on_save = function(bufnr)
-                local disable_ft = { c = true, cpp = true }
-                return {
-                    timeout_ms = 500,
-                    lsp_fallback = not disable_ft[vim.bo[bufnr].filetype],
-                }
-            end,
-        },
     },
 
     {
