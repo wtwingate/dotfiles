@@ -38,6 +38,7 @@ return {
                     Lua = {
                         completion = { callSnippet = "Replace" },
                         diagnostics = { disable = { "missing-fields" } },
+                        workspace = { library = { vim.env.VIMRUNTIME } },
                     },
                 },
             })
