@@ -175,12 +175,11 @@ return {
     },
 
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme("catppuccin")
+            vim.cmd.colorscheme("gruvbox")
         end,
     },
 
@@ -191,7 +190,7 @@ return {
             require("lualine").setup({
                 options = {
                     icons_enabled = false,
-                    theme = "catppuccin",
+                    theme = "gruvbox",
                 }
             })
         end,
