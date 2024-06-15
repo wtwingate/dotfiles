@@ -27,31 +27,8 @@ packadd! matchit
 set number
 set relativenumber
 
-" Set cursor options
-set cursorline
-set scrolloff=4
-set sidescrolloff=4
-
-" Disable line wrapping
-set nowrap
-
-" Enable search highlighting
+" Set search options
 set hlsearch
 set incsearch
-
-" Set search options
 set ignorecase
 set smartcase
-
-" Configure split windows
-set splitright
-set splitbelow
-
-" Use 24-bit terminal colors
-set termguicolors
-
-" Set dark background
-set background=dark
-
-" Set default color scheme
-colorscheme retrobox

@@ -1,3 +1,0 @@
-" Options for Git commit files
-setlocal spell
-setlocal spelllang=en_us
