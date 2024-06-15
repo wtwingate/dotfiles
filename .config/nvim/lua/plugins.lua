@@ -10,9 +10,7 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
-                "cssls",
                 "gopls",
-                "html",
                 "lua_ls",
                 "pyright",
                 "rust_analyzer",
@@ -175,6 +173,28 @@ return {
     },
 
     {
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                lua = { "stylua" },
+            },
+            format_on_save = {
+                timeout_ms = 500,
+                lsp_fallback = false,
+            },
+        },
+    },
+
+    {
+        "stevearc/oil.nvim",
+        -- dependencies = { "nvim-tree/nvim-web-devicons" },
+        keys = {
+            { "-", "<Cmd>Oil<CR>", desc = "Open parent directory" },
+        },
+        opts = {},
+    },
+
+    {
         "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000,
@@ -191,13 +211,17 @@ return {
                 options = {
                     icons_enabled = false,
                     theme = "gruvbox",
-                }
+                },
             })
         end,
     },
 
     "tpope/vim-fugitive",
     "tpope/vim-surround",
+    "tpope/vim-repeat",
+    "tpope/vim-dadbod",
+    "tpope/vim-endwise",
+    "tpope/vim-fireplace",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
