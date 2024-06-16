@@ -10,6 +10,7 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
+                "clojure_lsp",
                 "gopls",
                 "lua_ls",
                 "pyright",
@@ -218,9 +219,6 @@ return {
 
     "tpope/vim-fugitive",
     "tpope/vim-surround",
-    "tpope/vim-repeat",
-    "tpope/vim-dadbod",
-    "tpope/vim-endwise",
     "tpope/vim-fireplace",
 }
 
