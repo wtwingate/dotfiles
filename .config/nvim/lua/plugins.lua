@@ -14,6 +14,7 @@ return {
                 "gopls",
                 "lua_ls",
                 "pyright",
+                "ruff_lsp",
                 "rust_analyzer",
                 "tsserver",
             }
@@ -177,11 +178,18 @@ return {
         "stevearc/conform.nvim",
         opts = {
             formatters_by_ft = {
+                clojure = { "cljfmt" },
+                css = { "prettier" },
+                html = { "prettier" },
+                javascript = { "prettier" },
+                json = { "prettier" },
                 lua = { "stylua" },
+                markdown = { "prettier" },
+                python = { "ruff_fix", "ruff_format" },
             },
             format_on_save = {
                 timeout_ms = 500,
-                lsp_fallback = false,
+                lsp_fallback = true,
             },
         },
     },
