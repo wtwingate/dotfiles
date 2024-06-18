@@ -185,7 +185,7 @@ return {
                 json = { "prettier" },
                 lua = { "stylua" },
                 markdown = { "prettier" },
-                python = { "autopep8" },
+                python = { "isort", "autopep8" },
             },
             format_on_save = {
                 timeout_ms = 500,
