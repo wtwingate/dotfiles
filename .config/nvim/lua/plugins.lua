@@ -10,12 +10,9 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
-                "clojure_lsp",
-                "gopls",
                 "lua_ls",
                 "pyright",
                 "ruff_lsp",
-                "rust_analyzer",
                 "tsserver",
             }
 
@@ -178,13 +175,10 @@ return {
         "stevearc/conform.nvim",
         opts = {
             formatters_by_ft = {
-                clojure = { "cljfmt" },
                 css = { "prettier" },
                 html = { "prettier" },
                 javascript = { "prettier" },
-                json = { "prettier" },
                 lua = { "stylua" },
-                markdown = { "prettier" },
                 python = { "isort", "autopep8" },
             },
             format_on_save = {
@@ -227,7 +221,6 @@ return {
 
     "tpope/vim-fugitive",
     "tpope/vim-surround",
-    "tpope/vim-fireplace",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
