@@ -10,6 +10,7 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
+                "clojure_lsp",
                 "lua_ls",
                 "pyright",
                 "ruff_lsp",
@@ -175,6 +176,7 @@ return {
         "stevearc/conform.nvim",
         opts = {
             formatters_by_ft = {
+                clojure = { "cljfmt" },
                 css = { "prettier" },
                 html = { "prettier" },
                 javascript = { "prettier" },
