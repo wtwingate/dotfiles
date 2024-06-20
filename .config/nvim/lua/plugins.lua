@@ -221,8 +221,36 @@ return {
         end,
     },
 
+    {
+        "Olical/conjure",
+        ft = { "clojure" },
+        lazy = true,
+        init = function()
+            -- Set configuration options here
+            vim.g["conjure#debug"] = true
+        end,
+        dependencies = { "PaterJason/cmp-conjure" },
+    },
+
+    {
+        "PaterJason/cmp-conjure",
+        lazy = true,
+        config = function()
+            local cmp = require("cmp")
+            local config = cmp.get_config()
+            table.insert(config.sources, { name = "conjure" })
+            return cmp.setup(config)
+        end,
+    },
+
+    {
+        "PaterJason/nvim-treesitter-sexp",
+        opts = {},
+    },
+
     "tpope/vim-fugitive",
     "tpope/vim-surround",
+    "tpope/vim-repeat",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
