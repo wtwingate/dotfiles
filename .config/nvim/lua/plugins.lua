@@ -181,7 +181,7 @@ return {
                 html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
-                python = { "isort", "autopep8" },
+                -- python = { "isort", "autopep8" },
             },
             format_on_save = {
                 timeout_ms = 500,
@@ -221,36 +221,14 @@ return {
         end,
     },
 
-    {
-        "Olical/conjure",
-        ft = { "clojure" },
-        lazy = true,
-        init = function()
-            -- Set configuration options here
-            vim.g["conjure#debug"] = true
-        end,
-        dependencies = { "PaterJason/cmp-conjure" },
-    },
-
-    {
-        "PaterJason/cmp-conjure",
-        lazy = true,
-        config = function()
-            local cmp = require("cmp")
-            local config = cmp.get_config()
-            table.insert(config.sources, { name = "conjure" })
-            return cmp.setup(config)
-        end,
-    },
-
-    {
-        "PaterJason/nvim-treesitter-sexp",
-        opts = {},
-    },
-
     "tpope/vim-fugitive",
     "tpope/vim-surround",
     "tpope/vim-repeat",
+
+    -- Clojure plugins
+    "tpope/vim-fireplace",
+    "guns/vim-sexp",
+    "tpope/vim-sexp-mappings-for-regular-people",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
