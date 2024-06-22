@@ -14,6 +14,7 @@ return {
                 "lua_ls",
                 "pyright",
                 "ruff_lsp",
+                "rust_analyzer",
                 "tsserver",
             }
 
@@ -182,6 +183,7 @@ return {
                 javascript = { "prettier" },
                 lua = { "stylua" },
                 -- python = { "isort", "autopep8" },
+                rust = { "rustfmt" },
             },
             format_on_save = {
                 timeout_ms = 500,
