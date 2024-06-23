@@ -1,3 +1,8 @@
+(setq make-backup-files nil) ; disable backup files
+
+(global-display-line-numbers-mode 1)
+(global-hl-line-mode 1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
