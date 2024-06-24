@@ -2,6 +2,7 @@
 (global-display-line-numbers-mode 1) ; enable line numbers
 (global-hl-line-mode 1)              ; enable cursor line
 (setq inferior-lisp-program "sbcl")  ; set Common Lisp interpreter
+(load-theme 'modus-vivendi)          ; set color theme
 
 ;; MELPA
 (require 'package)
