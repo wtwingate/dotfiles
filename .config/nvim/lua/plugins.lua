@@ -223,18 +223,13 @@ return {
         end,
     },
 
-    "tpope/vim-fugitive",
-    "tpope/vim-surround",
-    "tpope/vim-repeat",
-
-    -- Clojure plugins
     {
         "Olical/conjure",
         ft = { "clojure" }, -- etc
         lazy = true,
         init = function()
             -- Set configuration options here
-            vim.g["conjure#debug"] = true
+            -- vim.g["conjure#debug"] = true
         end,
 
         -- Optional cmp-conjure integration
@@ -251,8 +246,11 @@ return {
             return cmp.setup(config)
         end,
     },
+
+    "tpope/vim-fugitive",
+    "tpope/vim-surround",
+    "tpope/vim-repeat",
     "guns/vim-sexp",
-    "tpope/vim-sexp-mappings-for-regular-people",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
