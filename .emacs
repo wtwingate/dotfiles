@@ -1,16 +1,27 @@
-(setq make-backup-files nil)         ; disable backup files
-(global-display-line-numbers-mode 1) ; enable line numbers
-(global-hl-line-mode 1)              ; enable cursor line
-(setq inferior-lisp-program "sbcl")  ; set Common Lisp interpreter
-(load-theme 'modus-operandi)         ; set color theme
+;;============;;
+;;  Packages  ;;
+;;============;;
 
-;; MELPA
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 ;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+
+;;============;;
+;;  Settings  ;;
+;;============;;
+
+(load-theme 'modus-operandi)         ; set color theme
+(global-display-line-numbers-mode 1) ; enable line numbers
+(global-hl-line-mode 1)              ; enable cursor line
+(setq inferior-lisp-program "sbcl")  ; set Common Lisp interpreter
+(setq make-backup-files nil)         ; disable backup files
+
+;;==========;;
+;;  Custom  ;;
+;;==========;;
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
