@@ -13,7 +13,6 @@
 ;;  Settings  ;;
 ;;============;;
 
-(load-theme 'modus-operandi)         ; set color theme
 (global-display-line-numbers-mode 1) ; enable line numbers
 (global-hl-line-mode 1)              ; enable cursor line
 (setq inferior-lisp-program "sbcl")  ; set Common Lisp interpreter
