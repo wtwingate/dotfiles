@@ -182,7 +182,6 @@ return {
                 html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
-                -- python = { "isort", "autopep8" },
                 rust = { "rustfmt" },
             },
             format_on_save = {
