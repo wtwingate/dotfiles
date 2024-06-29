@@ -14,7 +14,6 @@ return {
                 "lua_ls",
                 "pyright",
                 "ruff_lsp",
-                "rust_analyzer",
                 "tsserver",
             }
 
@@ -182,7 +181,7 @@ return {
                 html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
-                rust = { "rustfmt" },
+                -- python = { "isort", "autopep8" },
             },
             format_on_save = {
                 timeout_ms = 500,
@@ -250,6 +249,7 @@ return {
     "tpope/vim-surround",
     "tpope/vim-repeat",
     "guns/vim-sexp",
+    "tpope/vim-sexp-mappings-for-regular-people",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
