@@ -5,11 +5,22 @@
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(which-key modus-themes gnu-elpa-keyring-update magit cider clojure-mode slime paredit)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "MonoLisa" :foundry "FCTP" :slant normal :weight normal :height 120 :width normal)))))
+
 (require 'modus-themes)
 (load-theme 'modus-operandi :no-confirm)
-
-;; (require 'evil)
-;; (evil-mode 1)
 
 (require 'which-key)
 (which-key-mode 1)
@@ -24,19 +35,6 @@
 (setq inferior-lisp-program "sbcl")
 
 (setq make-backup-files nil)
+(tool-bar-mode 0)
 (global-display-line-numbers-mode 1)
 (global-hl-line-mode 1)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(which-key modus-themes evil magit gnu-elpa-keyring-update cider clojure-mode slime paredit)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "MonoLisa" :foundry "FCTP" :slant normal :weight normal :height 120 :width normal)))))
