@@ -181,7 +181,7 @@ return {
                 html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
-                -- python = { "isort", "autopep8" },
+                python = { "isort", "autopep8" },
             },
             format_on_save = {
                 timeout_ms = 500,
