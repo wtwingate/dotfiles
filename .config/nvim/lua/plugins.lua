@@ -181,7 +181,7 @@ return {
                 html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
-                -- python = { "isort", "autopep8" },
+                python = { "isort", "autopep8" },
             },
             format_on_save = {
                 timeout_ms = 500,
@@ -229,9 +229,9 @@ return {
     "tpope/vim-fugitive",
     "tpope/vim-surround",
     "tpope/vim-repeat",
-    "tpope/vim-fireplace",
     "guns/vim-sexp",
     "tpope/vim-sexp-mappings-for-regular-people",
+    "tpope/vim-fireplace",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
