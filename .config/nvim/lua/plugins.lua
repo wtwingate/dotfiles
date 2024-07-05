@@ -182,12 +182,17 @@ return {
                 html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
+                markdown = { "prettier" },
                 python = { "isort", "autopep8" },
+                typescript = { "prettier" },
             },
-            format_on_save = {
-                timeout_ms = 500,
-                lsp_fallback = true,
-            },
+            format_on_save = function(bufnr)
+                local disable_filetypes = { c = true, cpp = true }
+                return {
+                    timeout_ms = 500,
+                    lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+                }
+            end,
         },
     },
 
@@ -218,6 +223,8 @@ return {
                 options = {
                     icons_enabled = false,
                     theme = "catppuccin",
+                    component_separators = "|",
+                    section_separators = "",
                 },
             })
         end,
