@@ -201,11 +201,12 @@ return {
     },
 
     {
-        "ellisonleao/gruvbox.nvim",
+        "catppuccin/nvim",
+        name = "catppuccin",
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme("gruvbox")
+            vim.cmd.colorscheme("catppuccin")
         end,
     },
 
@@ -216,15 +217,10 @@ return {
             require("lualine").setup({
                 options = {
                     icons_enabled = false,
-                    theme = "gruvbox",
+                    theme = "catppuccin",
                 },
             })
         end,
-    },
-
-    {
-        "numToStr/Comment.nvim",
-        opts = {},
     },
 
     "tpope/vim-fugitive",
@@ -232,7 +228,28 @@ return {
     "tpope/vim-repeat",
     "guns/vim-sexp",
     "tpope/vim-sexp-mappings-for-regular-people",
-    "tpope/vim-fireplace",
+
+    {
+        "Olical/conjure",
+        ft = { "clojure" }, -- etc
+        lazy = true,
+        init = function()
+            -- Set configuration options here
+            vim.g["conjure#debug"] = true
+        end,
+        dependencies = { "PaterJason/cmp-conjure" },
+    },
+
+    {
+        "PaterJason/cmp-conjure",
+        lazy = true,
+        config = function()
+            local cmp = require("cmp")
+            local config = cmp.get_config()
+            table.insert(config.sources, { name = "conjure" })
+            return cmp.setup(config)
+        end,
+    },
 }
 
 -- vim: ts=4 sts=4 sw=4 et
