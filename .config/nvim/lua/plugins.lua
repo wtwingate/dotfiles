@@ -11,6 +11,7 @@ return {
                 "astro",
                 "clangd",
                 "clojure_lsp",
+                "jdtls",
                 "lua_ls",
                 "pyright",
                 "ruff_lsp",
