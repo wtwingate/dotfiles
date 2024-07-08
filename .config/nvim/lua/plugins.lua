@@ -235,28 +235,7 @@ return {
     "tpope/vim-repeat",
     "guns/vim-sexp",
     "tpope/vim-sexp-mappings-for-regular-people",
-
-    {
-        "Olical/conjure",
-        ft = { "clojure" }, -- etc
-        lazy = true,
-        init = function()
-            -- Set configuration options here
-            vim.g["conjure#debug"] = true
-        end,
-        dependencies = { "PaterJason/cmp-conjure" },
-    },
-
-    {
-        "PaterJason/cmp-conjure",
-        lazy = true,
-        config = function()
-            local cmp = require("cmp")
-            local config = cmp.get_config()
-            table.insert(config.sources, { name = "conjure" })
-            return cmp.setup(config)
-        end,
-    },
+    "tpope/vim-fireplace",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
