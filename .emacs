@@ -11,7 +11,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(which-key magit cider clojure-mode slime paredit gnu-elpa-keyring-update)))
+   '(which-key cider clojure-mode slime paredit magit)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -26,11 +26,11 @@
 (load-theme 'modus-operandi)
 (setq inferior-lisp-program "sbcl")
 
-(which-key-mode 1)
-
 (autoload 'enable-paredit-mode "paredit"
   "Turn on pseudo-structural editing of Lisp code."
   t)
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+
+(which-key-mode 1)
