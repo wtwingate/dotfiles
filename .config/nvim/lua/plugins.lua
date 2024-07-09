@@ -10,11 +10,14 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
-                "clojure_lsp",
+                "cssls",
+                "emmet_language_server",
+                "html",
                 "jdtls",
                 "lua_ls",
                 "pyright",
                 "ruff_lsp",
+                "tailwindcss",
                 "tsserver",
             }
 
@@ -155,6 +158,8 @@ return {
                 html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
+                markdown = { "prettier" },
+                typescript = { "prettier" },
             },
             format_on_save = function(bufnr)
                 local disable_filetypes = { c = true, cpp = true }
@@ -194,6 +199,7 @@ return {
         config = function()
             require("mini.ai").setup()
             require("mini.comment").setup()
+            require("mini.pairs").setup()
             require("mini.surround").setup()
         end,
     },
