@@ -22,6 +22,7 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 (global-display-line-numbers-mode 1)
+(global-hl-line-mode 1)
 
 (load-theme 'modus-operandi)
 (setq inferior-lisp-program "sbcl")

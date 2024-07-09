@@ -140,7 +140,7 @@ return {
                 highlight = {
                     enable = true,
                     disable = {},
-                    additional_vim_regex_highlighting = false,
+                    additional_vim_regex_highlighting = { "clojure" },
                 },
 
                 indent = {
@@ -239,9 +239,12 @@ return {
     "tpope/vim-fugitive",
     "tpope/vim-surround",
     "tpope/vim-repeat",
-    "guns/vim-sexp",
-    "tpope/vim-sexp-mappings-for-regular-people",
     "tpope/vim-fireplace",
+    "tpope/vim-salve",
+    "tpope/vim-projectionist",
+    "tpope/vim-dispatch",
+    "tpope/vim-sexp-mappings-for-regular-people",
+    "guns/vim-sexp",
 }
 
 -- vim: ts=4 sts=4 sw=4 et

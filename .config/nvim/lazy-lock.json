@@ -17,9 +17,12 @@
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
+  "vim-dispatch": { "branch": "master", "commit": "4c695bc052cad2ae6b980aebbe48d046466e27ae" },
   "vim-fireplace": { "branch": "master", "commit": "fa1201dd55802e442e17e0fbd164cf546246dad1" },
   "vim-fugitive": { "branch": "master", "commit": "8c8cdf4405cb8bdb70dd9812a33bb52363a87dbc" },
-  "vim-repeat": { "branch": "master", "commit": "5bd4c87a1417a7187d0329e81eb83514ee481250" },
+  "vim-projectionist": { "branch": "master", "commit": "3736bd4a5f23b30821cbb892385bb1f1b0088cfc" },
+  "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
+  "vim-salve": { "branch": "master", "commit": "92f6553654c3d2b6de0158fc4a59c4496dfc8105" },
   "vim-sexp": { "branch": "master", "commit": "14464d4580af43424ed8f2614d94e62bfa40bb4d" },
   "vim-sexp-mappings-for-regular-people": { "branch": "master", "commit": "cc5923e357373ea6ef0c13eae82f44e6b9b1d374" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" }
