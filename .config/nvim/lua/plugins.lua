@@ -64,8 +64,6 @@ return {
         "hrsh7th/nvim-cmp",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-buffer",
-            "hrsh7th/cmp-path",
             {
                 "L3MON4D3/LuaSnip",
                 version = "v2.*",
@@ -110,8 +108,6 @@ return {
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
-                    { name = "buffer" },
-                    { name = "path" },
                 }),
             })
         end,
@@ -152,6 +148,25 @@ return {
     },
 
     {
+        "stevearc/conform.nvim",
+        opts = {
+            formatters_by_ft = {
+                css = { "prettier" },
+                html = { "prettier" },
+                javascript = { "prettier" },
+                lua = { "stylua" },
+            },
+            format_on_save = function(bufnr)
+                local disable_filetypes = { c = true, cpp = true }
+                return {
+                    timeout_ms = 500,
+                    lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+                }
+            end,
+        },
+    },
+
+    {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = {
@@ -174,36 +189,16 @@ return {
     },
 
     {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                clojure = { "cljfmt" },
-                css = { "prettier" },
-                html = { "prettier" },
-                javascript = { "prettier" },
-                lua = { "stylua" },
-                markdown = { "prettier" },
-                python = { "isort", "autopep8" },
-                typescript = { "prettier" },
-            },
-            format_on_save = function(bufnr)
-                local disable_filetypes = { c = true, cpp = true }
-                return {
-                    timeout_ms = 500,
-                    lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-                }
-            end,
-        },
+        "echasnovski/mini.nvim",
+        version = false,
+        config = function()
+            require("mini.ai").setup()
+            require("mini.comment").setup()
+            require("mini.surround").setup()
+        end,
     },
 
-    {
-        "stevearc/oil.nvim",
-        -- dependencies = { "nvim-tree/nvim-web-devicons" },
-        keys = {
-            { "-", "<Cmd>Oil<CR>", desc = "Open parent directory" },
-        },
-        opts = {},
-    },
+    "tpope/vim-fugitive",
 
     {
         "catppuccin/nvim",
@@ -220,31 +215,6 @@ return {
             vim.cmd.colorscheme("catppuccin")
         end,
     },
-
-    {
-        "nvim-lualine/lualine.nvim",
-        -- dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            require("lualine").setup({
-                options = {
-                    icons_enabled = false,
-                    theme = "catppuccin",
-                    component_separators = "|",
-                    section_separators = "",
-                },
-            })
-        end,
-    },
-
-    "tpope/vim-fugitive",
-    "tpope/vim-surround",
-    "tpope/vim-repeat",
-    "tpope/vim-fireplace",
-    "tpope/vim-salve",
-    "tpope/vim-projectionist",
-    "tpope/vim-dispatch",
-    "tpope/vim-sexp-mappings-for-regular-people",
-    "guns/vim-sexp",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
