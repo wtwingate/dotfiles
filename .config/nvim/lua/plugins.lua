@@ -199,11 +199,7 @@ return {
         config = function()
             require("mini.ai").setup()
             require("mini.comment").setup()
-            require("mini.git").setup()
             require("mini.pairs").setup()
-            require("mini.statusline").setup({
-                use_icons = false,
-            })
             require("mini.surround").setup()
         end,
     },
