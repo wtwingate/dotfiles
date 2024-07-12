@@ -10,7 +10,6 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
-                "clojure_lsp",
                 "cssls",
                 "emmet_language_server",
                 "html",
@@ -140,7 +139,6 @@ return {
                 highlight = {
                     enable = true,
                     disable = {},
-                    additional_vim_regex_highlighting = { "clojure" },
                 },
 
                 indent = {
@@ -156,7 +154,6 @@ return {
         opts = {
             formatters_by_ft = {
                 css = { "prettier" },
-                clojure = { "cljfmt" },
                 html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
@@ -227,46 +224,6 @@ return {
     },
 
     "tpope/vim-fugitive",
-
-    {
-        "echasnovski/mini.nvim",
-        version = false,
-        config = function()
-            require("mini.ai").setup()
-            require("mini.comment").setup()
-            require("mini.surround").setup()
-        end,
-    },
-
-    {
-        "Olical/conjure",
-        ft = { "clojure" },
-        lazy = true,
-        init = function()
-            -- Set configuration options here
-            vim.g["conjure#debug"] = true
-        end,
-
-        -- Optional cmp-conjure integration
-        dependencies = { "PaterJason/cmp-conjure" },
-    },
-    {
-        "PaterJason/cmp-conjure",
-        lazy = true,
-        config = function()
-            local cmp = require("cmp")
-            local config = cmp.get_config()
-            table.insert(config.sources, { name = "conjure" })
-            return cmp.setup(config)
-        end,
-    },
-
-    {
-        "julienvincent/nvim-paredit",
-        config = function()
-            require("nvim-paredit").setup()
-        end,
-    },
 }
 
 -- vim: ts=4 sts=4 sw=4 et
