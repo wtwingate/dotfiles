@@ -10,6 +10,7 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
+                "clojure_lsp",
                 "cssls",
                 "emmet_language_server",
                 "html",
@@ -155,6 +156,7 @@ return {
         opts = {
             formatters_by_ft = {
                 css = { "prettier" },
+                clojure = { "cljfmt" },
                 html = { "prettier" },
                 javascript = { "prettier" },
                 lua = { "stylua" },
@@ -194,19 +196,6 @@ return {
     },
 
     {
-        "echasnovski/mini.nvim",
-        version = false,
-        config = function()
-            require("mini.ai").setup()
-            require("mini.comment").setup()
-            require("mini.pairs").setup()
-            require("mini.surround").setup()
-        end,
-    },
-
-    "tpope/vim-fugitive",
-
-    {
         "catppuccin/nvim",
         name = "catppuccin",
         lazy = false,
@@ -219,6 +208,63 @@ return {
                 },
             })
             vim.cmd.colorscheme("catppuccin")
+        end,
+    },
+
+    {
+        "nvim-lualine/lualine.nvim",
+        -- dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("lualine").setup({
+                options = {
+                    icons_enabled = false,
+                    theme = "catppuccin",
+                    component_separators = "|",
+                    section_separators = " ",
+                },
+            })
+        end,
+    },
+
+    "tpope/vim-fugitive",
+
+    {
+        "echasnovski/mini.nvim",
+        version = false,
+        config = function()
+            require("mini.ai").setup()
+            require("mini.comment").setup()
+            require("mini.surround").setup()
+        end,
+    },
+
+    {
+        "Olical/conjure",
+        ft = { "clojure" },
+        lazy = true,
+        init = function()
+            -- Set configuration options here
+            vim.g["conjure#debug"] = true
+        end,
+
+        -- Optional cmp-conjure integration
+        dependencies = { "PaterJason/cmp-conjure" },
+    },
+    {
+        "PaterJason/cmp-conjure",
+        lazy = true,
+        config = function()
+            local cmp = require("cmp")
+            local config = cmp.get_config()
+            table.insert(config.sources, { name = "conjure" })
+            return cmp.setup(config)
+        end,
+    },
+
+    {
+        "julienvincent/nvim-paredit",
+        config = function()
+            require("nvim-paredit").setup()
         end,
     },
 }
