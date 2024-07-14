@@ -170,6 +170,24 @@ return {
     },
 
     {
+        "stevearc/oil.nvim",
+        keys = {
+            { "-", "<Cmd>Oil<CR>", desc = "Open parent directory" },
+        },
+        opts = {
+            columns = {
+                "icon",
+                "permissions",
+                "size",
+                "mtime",
+            },
+            view_options = {
+                show_hidden = true,
+            },
+        },
+    },
+
+    {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = {
@@ -188,6 +206,73 @@ return {
             vim.keymap.set("n", "<Leader>fg", builtin.live_grep, {})
             vim.keymap.set("n", "<Leader>fb", builtin.buffers, {})
             vim.keymap.set("n", "<Leader>fh", builtin.help_tags, {})
+        end,
+    },
+
+    {
+        "folke/trouble.nvim",
+        opts = {},
+        cmd = "Trouble",
+        keys = {
+            {
+                "<Leader>xx",
+                "<Cmd>Trouble diagnostics toggle<CR>",
+                desc = "Diagnostics (Trouble)",
+            },
+            {
+                "<Leader>xX",
+                "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+                desc = "Buffer Diagnostics (Trouble)",
+            },
+            {
+                "<Leader>cs",
+                "<Cmd>Trouble symbols toggle focus=false<CR>",
+                desc = "Symbols (Trouble)",
+            },
+            {
+                "<Leader>cl",
+                "<Cmd>Trouble lsp toggle focus=false win.position=right<CR>",
+                desc = "LSP Definitions / references / ... (Trouble)",
+            },
+            {
+                "<Leader>xL",
+                "<Cmd>Trouble loclist toggle<CR>",
+                desc = "Location List (Trouble)",
+            },
+            {
+                "<Leader>xQ",
+                "<Cmd>Trouble qflist toggle<CR>",
+                desc = "Quickfix List (Trouble)",
+            },
+        },
+    },
+
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {},
+        keys = {
+            {
+                "<Leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
+    },
+
+    {
+        "echasnovski/mini.nvim",
+        version = false,
+        config = function()
+            require("mini.ai").setup()
+            require("mini.comment").setup()
+            require("mini.diff").setup()
+            require("mini.git").setup()
+            require("mini.icons").setup()
+            require("mini.pairs").setup()
+            require("mini.surround").setup()
         end,
     },
 
@@ -214,7 +299,7 @@ return {
             require("lualine").setup({
                 options = {
                     icons_enabled = false,
-                    theme = "gruvbox",
+                    theme = "auto",
                     component_separators = "|",
                     section_separators = " ",
                 },
