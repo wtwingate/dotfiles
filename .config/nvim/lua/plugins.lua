@@ -13,7 +13,6 @@ return {
                 "cssls",
                 "emmet_language_server",
                 "html",
-                "jdtls",
                 "lua_ls",
                 "pyright",
                 "ruff_lsp",
@@ -193,18 +192,18 @@ return {
     },
 
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "ellisonleao/gruvbox.nvim",
+        name = "gruvbox",
         lazy = false,
         priority = 1000,
         config = function()
-            require("catppuccin").setup({
+            require("gruvbox").setup({
                 background = {
                     light = "latte",
                     dark = "macchiato",
                 },
             })
-            vim.cmd.colorscheme("catppuccin")
+            vim.cmd.colorscheme("gruvbox")
         end,
     },
 
@@ -215,7 +214,7 @@ return {
             require("lualine").setup({
                 options = {
                     icons_enabled = false,
-                    theme = "catppuccin",
+                    theme = "gruvbox",
                     component_separators = "|",
                     section_separators = " ",
                 },
