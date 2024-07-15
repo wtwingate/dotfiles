@@ -11,7 +11,17 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "MonoLisa" :foundry "FCTP" :slant normal :weight normal :height 120 :width normal)))))
 
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
 (load-theme 'modus-operandi)
+
+(global-display-line-numbers-mode 1)
+(global-hl-line-mode 1)
 
 (autoload 'enable-paredit-mode "paredit"
   "Turn on pseudo-structural editing of Lisp code." t)
