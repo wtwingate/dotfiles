@@ -10,6 +10,7 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
+                "clojure_lsp",
                 "cssls",
                 "emmet_language_server",
                 "html",
@@ -278,16 +279,9 @@ return {
 
     {
         "ellisonleao/gruvbox.nvim",
-        name = "gruvbox",
         lazy = false,
         priority = 1000,
         config = function()
-            require("gruvbox").setup({
-                background = {
-                    light = "latte",
-                    dark = "macchiato",
-                },
-            })
             vim.cmd.colorscheme("gruvbox")
         end,
     },
