@@ -156,6 +156,7 @@ return {
                 javascript = { "prettier" },
                 lua = { "stylua" },
                 markdown = { "prettier" },
+                python = { "isort", "autopep8" },
                 typescript = { "prettier" },
             },
             format_on_save = function(bufnr)
