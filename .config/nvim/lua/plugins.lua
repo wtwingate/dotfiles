@@ -9,6 +9,7 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
+                "clojure_lsp",
                 "cssls",
                 "emmet_language_server",
                 "html",

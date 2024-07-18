@@ -58,7 +58,7 @@ vim.opt.undofile = true
 
 -- [[ Neovim Keymaps ]]
 
--- Clear search highlighting
+vim.keymap.set("n", "-", "<Cmd>Explore<CR>", { desc = "Explore parent directory" })
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlighting" })
 
 -- [[ Neovim Autocommands ]]
