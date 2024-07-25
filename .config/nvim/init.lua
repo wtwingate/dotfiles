@@ -18,7 +18,7 @@
 
 -- Set <Space> as the <Leader> key
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 
 -- [[ Neovim Options ]]
 
