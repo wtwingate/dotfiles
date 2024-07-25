@@ -9,7 +9,6 @@ return {
             local language_servers = {
                 "astro",
                 "clangd",
-                "clojure_lsp",
                 "cssls",
                 "emmet_language_server",
                 "html",
@@ -136,7 +135,7 @@ return {
                 ignore_install = {},
                 highlight = {
                     enable = true,
-                    disable = { "clojure" },
+                    disable = {},
                     additional_vim_regex_highlighting = false,
                 },
                 indent = {
@@ -156,7 +155,6 @@ return {
                 javascript = { "prettier" },
                 lua = { "stylua" },
                 markdown = { "prettier" },
-                python = { "isort", "autopep8" },
                 typescript = { "prettier" },
             },
             format_on_save = function(bufnr)
@@ -205,40 +203,12 @@ return {
         "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000,
-        config = function()
-            vim.cmd.colorscheme("gruvbox")
-        end,
+        -- config = function()
+        --     vim.cmd.colorscheme("gruvbox")
+        -- end,
     },
 
     "tpope/vim-fugitive",
-
-    {
-        "Olical/conjure",
-        ft = { "clojure", "fennel" }, -- etc
-        lazy = true,
-        init = function()
-            -- Set configuration options here
-            vim.g["conjure#debug"] = true
-        end,
-
-        -- Optional cmp-conjure integration
-        dependencies = { "PaterJason/cmp-conjure" },
-    },
-
-    {
-        "PaterJason/cmp-conjure",
-        lazy = true,
-        config = function()
-            local cmp = require("cmp")
-            local config = cmp.get_config()
-            table.insert(config.sources, { name = "conjure" })
-            return cmp.setup(config)
-        end,
-    },
-
-    -- Lisp/Clojure things
-    "guns/vim-sexp",
-    "tpope/vim-sexp-mappings-for-regular-people",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
