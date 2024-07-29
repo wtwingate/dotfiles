@@ -27,6 +27,16 @@ packadd! matchit
 set number
 set relativenumber
 
+" Set cursor options
+set cursorline
+set scrolloff=4
+set sidescrolloff=4
+
+" Set line wrap options
+set nowrap
+set linebreak
+set breakindent
+
 " Set search options
 set hlsearch
 set incsearch
