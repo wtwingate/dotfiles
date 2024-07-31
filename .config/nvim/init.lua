@@ -20,7 +20,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- [[ Neovim Options ]]
+-- [[ Options ]]
 
 -- Enable line numbers
 vim.opt.number = true
@@ -31,24 +31,16 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 4
 
--- Disable line wrapping
-vim.opt.wrap = false
-
 -- Set line wrap options
+vim.opt.wrap = false
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 
--- Enable search highlighting
+-- Set search options
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
-
--- Set search options
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-
--- Configure split windows
-vim.opt.splitright = true
-vim.opt.splitbelow = true
 
 -- Preview substitutions
 vim.opt.inccommand = "split"
@@ -56,12 +48,12 @@ vim.opt.inccommand = "split"
 -- Save undo history
 vim.opt.undofile = true
 
--- [[ Neovim Keymaps ]]
+-- [[ Keymaps ]]
 
 vim.keymap.set("n", "-", "<Cmd>Explore<CR>", { desc = "Explore parent directory" })
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear search highlighting" })
 
--- [[ Neovim Autocommands ]]
+-- [[ Autocommands ]]
 
 -- Briefly highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -72,7 +64,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
--- [[ Neovim Plugins ]]
+-- [[ Plugins ]]
 
 -- Install and bootstrap plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

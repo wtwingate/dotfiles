@@ -190,25 +190,16 @@ return {
     },
 
     {
-        "echasnovski/mini.nvim",
-        version = false,
-        config = function()
-            require("mini.ai").setup()
-            require("mini.comment").setup()
-            require("mini.surround").setup()
-        end,
-    },
-
-    {
         "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000,
-        -- config = function()
-        --     vim.cmd.colorscheme("gruvbox")
-        -- end,
+        config = function()
+            vim.cmd.colorscheme("gruvbox")
+        end,
     },
 
     "tpope/vim-fugitive",
+    "tpope/vim-surround",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
