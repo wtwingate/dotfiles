@@ -7,11 +7,7 @@ return {
         },
         config = function()
             local language_servers = {
-                "astro",
                 "clangd",
-                "cssls",
-                "emmet_language_server",
-                "html",
                 "lua_ls",
                 "pyright",
                 "ruff_lsp",
@@ -24,19 +20,15 @@ return {
                 ensure_installed = language_servers,
             })
 
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
 
             for _, server in ipairs(language_servers) do
-                lspconfig[server].setup({
-                    capabilities = capabilities,
-                })
+                lspconfig[server].setup({})
             end
 
             lspconfig.lua_ls.setup({
                 settings = {
                     Lua = {
-                        completion = { callSnippet = "Replace" },
                         diagnostics = { disable = { "missing-fields" } },
                         workspace = { library = { vim.env.VIMRUNTIME } },
                     },
@@ -57,59 +49,6 @@ return {
                     map("<Leader>rn", vim.lsp.buf.rename, "Rename Symbol")
                     map("<Leader>ca", vim.lsp.buf.code_action, "Code Action")
                 end,
-            })
-        end,
-    },
-
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            {
-                "L3MON4D3/LuaSnip",
-                version = "v2.*",
-                build = "make install_jsregexp",
-            },
-            "saadparwaiz1/cmp_luasnip",
-        },
-        config = function()
-            local cmp = require("cmp")
-            local luasnip = require("luasnip")
-
-            cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end,
-                },
-
-                window = {
-                    completion = cmp.config.window.bordered(),
-                    documentation = cmp.config.window.bordered(),
-                },
-
-                mapping = cmp.mapping.preset.insert({
-                    ["<Tab>"] = cmp.mapping(function(fallback)
-                        if luasnip.expand_or_jumpable() then
-                            luasnip.expand_or_jump()
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-
-                    ["<S-Tab>"] = cmp.mapping(function(fallback)
-                        if luasnip.jumpable(-1) then
-                            luasnip.jump(-1)
-                        else
-                            fallback()
-                        end
-                    end, { "i", "s" }),
-                }),
-
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "luasnip" },
-                }),
             })
         end,
     },
@@ -147,27 +86,6 @@ return {
     },
 
     {
-        "stevearc/conform.nvim",
-        opts = {
-            formatters_by_ft = {
-                css = { "prettier" },
-                html = { "prettier" },
-                javascript = { "prettier" },
-                lua = { "stylua" },
-                markdown = { "prettier" },
-                typescript = { "prettier" },
-            },
-            format_on_save = function(bufnr)
-                local disable_filetypes = { c = true, cpp = true }
-                return {
-                    timeout_ms = 500,
-                    lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-                }
-            end,
-        },
-    },
-
-    {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = {
@@ -199,7 +117,6 @@ return {
     },
 
     "tpope/vim-fugitive",
-    "tpope/vim-surround",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
