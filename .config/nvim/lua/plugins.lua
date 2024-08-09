@@ -7,6 +7,7 @@ return {
         },
         config = function()
             local language_servers = {
+                "astro",
                 "clangd",
                 "lua_ls",
                 "pyright",
@@ -108,6 +109,18 @@ return {
     },
 
     {
+        "echasnovski/mini.nvim",
+        version = false,
+        config = function()
+            require("mini.ai").setup()
+            require("mini.comment").setup()
+            require("mini.operators").setup()
+            require("mini.pairs").setup()
+            require("mini.surround").setup()
+        end,
+    },
+
+    {
         "ellisonleao/gruvbox.nvim",
         lazy = false,
         priority = 1000,
@@ -117,6 +130,7 @@ return {
     },
 
     "tpope/vim-fugitive",
+    "tpope/vim-rhubarb",
 }
 
 -- vim: ts=4 sts=4 sw=4 et
