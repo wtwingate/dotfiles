@@ -16,13 +16,15 @@
 (setq user-full-name "William Wingate")
 (setq user-mail-address "wtwingate@gmail.com")
 
-;; UI Options
-(column-number-mode 1)
-(global-hl-line-mode 1)
-(global-display-line-numbers-mode 1)
-
 ;; Color Theme
 (load-theme 'modus-operandi)
+
+;; UI Options
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(column-number-mode 1)
+(add-hook 'prog-mode-hook #'hl-line-mode)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 ;; Packages
 (require 'package)
