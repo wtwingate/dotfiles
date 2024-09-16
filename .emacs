@@ -4,7 +4,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(web-mode slime paredit magit which-key)))
+ '(package-selected-packages '(go-mode web-mode slime paredit magit which-key)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -60,3 +60,6 @@
 
 ;; web-mode
 (use-package web-mode)
+
+;; go-mode
+(use-package go-mode)
