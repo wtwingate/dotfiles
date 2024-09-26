@@ -20,8 +20,9 @@
 (load-theme 'modus-operandi)
 
 ;; UI Options
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+(when (display-graphic-p)
+  (tool-bar-mode 0)
+  (scroll-bar-mode 0))
 (column-number-mode 1)
 (add-hook 'prog-mode-hook #'hl-line-mode)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
