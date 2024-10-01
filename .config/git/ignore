@@ -3,9 +3,5 @@
 *.un~
 *.swp
 
-# Emacs
-*~
-\#*\#
-
 # Mac
 .DS_Store
