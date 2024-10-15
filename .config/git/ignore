@@ -2,6 +2,3 @@
 *~
 *.un~
 *.swp
-
-# Mac
-.DS_Store
