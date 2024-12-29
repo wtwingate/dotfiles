@@ -19,21 +19,27 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "MonoLisa Variable" :foundry "FCTP" :slant normal :weight regular :height 128 :width normal)))))
 
-;; MELPA
+;; PACKAGE
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
-;; and `package-pinned-packages`. Most users will not need or want to do this.
-;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-;; PAREDIT
-(autoload 'enable-paredit-mode "paredit"
-  "Turn on pseudo-structural editing of Lisp code."
-  t)
+(unless package-archive-contents
+  (package-refresh-contents))
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
-(add-hook 'lisp-mode-hook 'enable-paredit-mode)
-(add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+;; MAGIT
+(use-package magit
+  :ensure t)
+
+;; PAREDIT
+(use-package paredit
+  :ensure t
+  :hook (lisp-mode emacs-lisp-mode))
 
 ;; SLIME
-(setq inferior-lisp-program "sbcl")
+(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "sbcl"))
