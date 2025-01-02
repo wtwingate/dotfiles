@@ -7,9 +7,11 @@
  '(c-basic-offset 4)
  '(column-number-mode t)
  '(custom-enabled-themes '(modus-operandi))
+ '(delete-selection-mode t)
  '(inhibit-startup-screen t)
- '(package-selected-packages '(slime paredit magit))
+ '(package-selected-packages '(marginalia vertico slime paredit magit))
  '(prog-mode-hook '(display-line-numbers-mode))
+ '(savehist-mode t)
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -29,17 +31,27 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+
 ;; MAGIT
-(use-package magit
-  :ensure t)
+(use-package magit)
 
 ;; PAREDIT
 (use-package paredit
-  :ensure t
   :hook (lisp-mode emacs-lisp-mode))
 
 ;; SLIME
 (use-package slime
-  :ensure t
   :init
   (setq inferior-lisp-program "sbcl"))
+
+;; VERTICO
+(use-package vertico
+  :init
+  (vertico-mode))
+
+;; MARGINALIA
+(use-package marginalia
+  :init
+  (marginalia-mode))
