@@ -8,7 +8,7 @@
  '(column-number-mode t)
  '(custom-enabled-themes '(modus-operandi))
  '(delete-selection-mode t)
- '(package-selected-packages '(magit))
+ '(package-selected-packages '(slime paredit magit))
  '(prog-mode-hook '(display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -31,3 +31,14 @@
 ;; MAGIT
 (use-package magit
   :ensure t)
+
+;; PAREDIT
+(use-package paredit
+  :ensure t
+  :hook (lisp-mode emacs-lisp-mode))
+
+;; SLIME
+(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "sbcl"))
