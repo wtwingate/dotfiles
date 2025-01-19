@@ -8,7 +8,7 @@
  '(custom-enabled-themes '(modus-operandi))
  '(delete-selection-mode t)
  '(inhibit-startup-screen t)
- '(package-selected-packages '(slime paredit magit))
+ '(package-selected-packages '(marginalia vertico slime paredit magit))
  '(prog-mode-hook '(display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -42,3 +42,15 @@
   :ensure t
   :init
   (setq inferior-lisp-program "sbcl"))
+
+;; VERTICO
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+
+;; MARGINALIA
+(use-package marginalia
+  :ensure t
+  :init
+  (marginalia-mode))
