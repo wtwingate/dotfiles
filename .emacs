@@ -5,8 +5,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(c-basic-offset 4)
+ '(column-number-mode t)
  '(custom-enabled-themes '(modus-operandi))
  '(delete-selection-mode t)
+ '(fill-column 72)
  '(inhibit-startup-screen t)
  '(package-selected-packages '(marginalia vertico slime paredit magit))
  '(prog-mode-hook '(display-line-numbers-mode))
