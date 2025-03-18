@@ -3,15 +3,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(custom-enabled-themes '(modus-operandi))
  '(delete-selection-mode t)
  '(inhibit-startup-screen t)
  '(package-selected-packages '(corfu marginalia vertico magit))
- '(prog-mode-hook '(display-line-numbers-mode))
+ '(prog-mode-hook '(flymake-mode display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
  '(tab-always-indent 'complete)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(which-key-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
