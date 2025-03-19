@@ -3,9 +3,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(c-basic-offset 4)
  '(column-number-mode t)
  '(custom-enabled-themes '(modus-operandi))
  '(delete-selection-mode t)
+ '(fill-column 72)
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(package-selected-packages nil)
  '(prog-mode-hook '(flymake-mode display-line-numbers-mode))
