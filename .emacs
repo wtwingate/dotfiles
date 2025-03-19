@@ -7,7 +7,7 @@
  '(custom-enabled-themes '(modus-operandi))
  '(delete-selection-mode t)
  '(inhibit-startup-screen t)
- '(package-selected-packages '(corfu marginalia vertico magit))
+ '(package-selected-packages nil)
  '(prog-mode-hook '(flymake-mode display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -47,3 +47,10 @@
   :ensure t
   :init
   (global-corfu-mode))
+
+(use-package cape
+  :ensure t
+  :bind ("C-c p" . cape-prefix-map)
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file))
