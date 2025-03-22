@@ -20,6 +20,7 @@
 source $VIMRUNTIME/defaults.vim
 
 " Add packages
+packadd! comment
 packadd! matchit
 
 " Enable line numbers
