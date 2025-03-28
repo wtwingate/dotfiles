@@ -12,7 +12,8 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(cape corfu go-mode magit marginalia orderless rust-mode vertico))
+   '(cape corfu go-mode magit marginalia orderless rust-mode vertico
+          web-mode yaml-mode))
  '(prog-mode-hook '(display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -65,3 +66,21 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
+
+(use-package go-mode
+  :ensure t)
+
+(use-package rust-mode
+  :ensure t)
+
+(use-package web-mode
+  :ensure t
+  :custom
+  (web-mode-markup-indent-offset 2)
+  (web-mode-css-indent-offset 2)
+  (web-mode-code-indent-offset 2)
+  :mode
+  ("\\.astro\\'" "\\.erb\\'"))
+
+(use-package yaml-mode
+  :ensure t)
