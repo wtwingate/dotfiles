@@ -12,8 +12,8 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(cape corfu go-mode magit marginalia orderless rust-mode vertico
-          web-mode yaml-mode))
+   '(cape corfu go-mode magit marginalia orderless paredit rust-mode slime
+          vertico web-mode yaml-mode))
  '(prog-mode-hook '(display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -66,6 +66,15 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
+
+(use-package paredit
+  :ensure t
+  :hook (emacs-lisp-mode lisp-mode))
+
+(use-package slime
+  :ensure t
+  :init
+  (setq inferior-lisp-program "sbcl"))
 
 (use-package go-mode
   :ensure t)
