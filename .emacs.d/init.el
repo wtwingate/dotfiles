@@ -12,8 +12,8 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(cape corfu go-mode magit marginalia orderless paredit rust-mode slime
-          vertico web-mode yaml-mode))
+   '(cape corfu go-mode magit marginalia markdown-mode orderless paredit
+          rust-mode slime vertico web-mode yaml-mode))
  '(prog-mode-hook '(display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -92,4 +92,7 @@
   ("\\.astro\\'" "\\.erb\\'"))
 
 (use-package yaml-mode
+  :ensure t)
+
+(use-package markdown-mode
   :ensure t)
