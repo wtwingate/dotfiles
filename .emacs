@@ -10,10 +10,11 @@
  '(delete-selection-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(package-selected-packages '(magit marginalia orderless vertico))
+ '(package-selected-packages '(cape corfu magit marginalia orderless vertico))
  '(prog-mode-hook '(display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
+ '(tab-always-indent 'complete)
  '(tool-bar-mode nil)
  '(which-key-mode t))
 (custom-set-faces
@@ -48,3 +49,16 @@
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
+
+(use-package corfu
+  :ensure t
+  :init
+  (global-corfu-mode))
+
+(use-package cape
+  :ensure t
+  :bind ("C-c p" . cape-prefix-map)
+  :init
+  (add-hook 'completion-at-point-functions #'cape-dabbrev)
+  (add-hook 'completion-at-point-functions #'cape-file)
+  (add-hook 'completion-at-point-functions #'cape-elisp-block))
