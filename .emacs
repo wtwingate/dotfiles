@@ -10,7 +10,7 @@
  '(delete-selection-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(package-selected-packages '(magit))
+ '(package-selected-packages '(magit marginalia orderless vertico))
  '(prog-mode-hook '(display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -32,3 +32,19 @@
 
 (use-package magit
   :ensure t)
+
+(use-package vertico
+  :ensure t
+  :init
+  (vertico-mode))
+
+(use-package marginalia
+  :ensure t
+  :init
+  (marginalia-mode))
+
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
