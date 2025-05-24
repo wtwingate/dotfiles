@@ -24,6 +24,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "MonoLisa" :foundry "FCTP" :slant normal :weight regular :height 120 :width normal)))))
 
+(global-set-key (kbd "M-o") 'other-window)
+
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
