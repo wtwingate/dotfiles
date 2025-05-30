@@ -46,3 +46,9 @@ set backupdir=~/.vim/backup//
 " Save undo history
 set undofile
 set undodir=~/.vim/undo//
+
+" Set color scheme
+set termguicolors
+set background=dark
+let g:gruvbox_italic=1
+colorscheme gruvbox
