@@ -5,6 +5,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist '(("." . "~/.emacs.d/backups/")))
+ '(before-save-hook '(delete-trailing-whitespace))
  '(column-number-mode t)
  '(custom-enabled-themes '(modus-operandi))
  '(delete-selection-mode t)
