@@ -12,8 +12,8 @@
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(cape corfu go-mode magit marginalia markdown-mode orderless
-          rust-mode vertico web-mode yaml-mode))
+   '(cape corfu dockerfile-mode go-mode magit marginalia markdown-mode
+          orderless rust-mode vertico web-mode yaml-mode))
  '(prog-mode-hook '(display-line-numbers-mode))
  '(savehist-mode t)
  '(scroll-bar-mode nil)
@@ -49,12 +49,6 @@
   :init
   (marginalia-mode))
 
-(use-package orderless
-  :ensure t
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
-
 (use-package corfu
   :ensure t
   :custom
@@ -70,6 +64,23 @@
   (add-hook 'completion-at-point-functions #'cape-file)
   (add-hook 'completion-at-point-functions #'cape-elisp-block))
 
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
+(use-package eglot
+  :config
+  (add-to-list 'eglot-server-programs
+               '((ruby-mode ruby-ts-mode) "ruby-lsp")))
+
+(use-package rust-mode
+  :ensure t)
+
+(use-package go-mode
+  :ensure t)
+
 (use-package web-mode
   :ensure t
   :custom
@@ -84,13 +95,5 @@
 (use-package yaml-mode
   :ensure t)
 
-(use-package go-mode
+(use-package dockerfile-mode
   :ensure t)
-
-(use-package rust-mode
-  :ensure t)
-
-(use-package eglot
-  :config
-  (add-to-list 'eglot-server-programs
-               '((ruby-mode ruby-ts-mode) "ruby-lsp")))
