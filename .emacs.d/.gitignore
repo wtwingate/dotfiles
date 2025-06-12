@@ -1,0 +1,8 @@
+auto-save-list/
+backups/
+custom.el
+eln-cache/
+elpa/
+games/
+history
+transient/
