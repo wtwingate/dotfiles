@@ -1,31 +1,26 @@
 ;;; -*- lexical-binding: t -*-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(backup-directory-alist '(("." . "~/.emacs.d/backups/")))
- '(before-save-hook '(delete-trailing-whitespace))
- '(column-number-mode t)
- '(custom-enabled-themes '(modus-operandi))
- '(delete-selection-mode t)
- '(indent-tabs-mode nil)
- '(inhibit-startup-screen t)
- '(package-selected-packages
-   '(cape corfu dockerfile-mode go-mode magit marginalia markdown-mode
-          orderless rust-mode vertico web-mode yaml-mode))
- '(prog-mode-hook '(display-line-numbers-mode))
- '(savehist-mode t)
- '(scroll-bar-mode nil)
- '(tab-always-indent 'complete)
- '(tool-bar-mode nil)
- '(which-key-mode t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "MonoLisa" :foundry "FCTP" :slant normal :weight regular :height 120 :width normal)))))
+(setopt custom-file (locate-user-emacs-file "custom.el"))
+(load custom-file :no-error-if-file-is-missing)
+
+(menu-bar-mode 1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(line-number-mode 1)
+(column-number-mode 1)
+(delete-selection-mode 1)
+(indent-tabs-mode -1)
+(savehist-mode 1)
+(which-key-mode 1)
+
+(load-theme 'modus-operandi-tinted)
+(set-face-attribute 'default nil :family "MonoLisa" :height 120)
+
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(setopt inhibit-startup-screen t)
+(setopt tab-always-indent 'complete)
+(setopt backup-directory-alist '(("." . "~/.emacs.d/backups/")))
 
 (global-set-key (kbd "M-o") 'other-window)
 
@@ -71,6 +66,7 @@
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package eglot
+  :ensure nil
   :config
   (add-to-list 'eglot-server-programs
                '((ruby-mode ruby-ts-mode) "ruby-lsp")))
