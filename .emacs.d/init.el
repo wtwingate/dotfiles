@@ -67,6 +67,11 @@
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode))
+
 (use-package eglot
   :ensure nil
   :config
