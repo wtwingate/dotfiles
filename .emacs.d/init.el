@@ -20,6 +20,8 @@
 
 (setopt inhibit-startup-screen t)
 (setopt tab-always-indent 'complete)
+(setopt text-mode-ispell-word-completion nil)
+(setopt read-extended-command-predicate 'command-completion-default-include-p)
 (setopt backup-directory-alist '(("." . "~/.emacs.d/backups/")))
 
 (global-set-key (kbd "M-o") 'other-window)
