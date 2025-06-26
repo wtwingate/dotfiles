@@ -36,6 +36,11 @@
 (use-package magit
   :ensure t)
 
+(use-package evil
+  :ensure t
+  :init
+  (evil-mode))
+
 (use-package vertico
   :ensure t
   :init
