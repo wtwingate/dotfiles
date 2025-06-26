@@ -12,7 +12,7 @@
 (savehist-mode 1)
 (which-key-mode 1)
 
-(load-theme 'modus-operandi-tinted)
+(load-theme 'modus-vivendi)
 (set-face-attribute 'default nil :family "MonoLisa" :height 120)
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
