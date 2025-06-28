@@ -37,9 +37,7 @@
   :ensure t)
 
 (use-package evil
-  :ensure t
-  :init
-  (evil-mode))
+  :ensure t)
 
 (use-package vertico
   :ensure t
