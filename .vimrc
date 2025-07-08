@@ -47,6 +47,9 @@ set backupdir=~/.vim/backup//
 set undofile
 set undodir=~/.vim/undo//
 
+" Find files recursively
+set path+=**
+
 " Set color scheme
 set termguicolors
 set background=dark
