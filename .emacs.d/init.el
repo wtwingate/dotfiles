@@ -79,6 +79,12 @@
   (add-to-list 'eglot-server-programs
                '((ruby-mode ruby-ts-mode) "ruby-lsp")))
 
+(use-package rust-mode
+  :ensure t)
+
+(use-package go-mode
+  :ensure t)
+
 (use-package web-mode
   :ensure t
   :custom
