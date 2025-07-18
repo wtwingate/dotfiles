@@ -27,9 +27,13 @@ vim.o.sidescrolloff = 2
 
 -- Set tabstop options
 vim.o.tabstop = 8
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+vim.o.softtabstop = -1
+vim.o.shiftwidth = 2
 vim.o.expandtab = true
+
+-- Set line wrap options
+vim.o.linebreak = true
+vim.o.breakindent = true
 
 -- Set search options
 vim.o.hlsearch = true
@@ -37,7 +41,7 @@ vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Configure window splits
+-- Set window split options
 vim.o.splitright = true
 vim.o.splitbelow = true
 
