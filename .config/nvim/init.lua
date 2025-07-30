@@ -46,9 +46,6 @@ vim.o.laststatus = 2
 -- Save undo history
 vim.o.undofile = true
 
--- Explore parent directory
-vim.keymap.set("n", "-", "<Cmd>Explore<CR>", { desc = "Explore parent directory" })
-
 -- Briefly highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("text_yank_post", { clear = true }),
