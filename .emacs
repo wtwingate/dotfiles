@@ -98,6 +98,12 @@
 (use-package yaml-mode
   :ensure t)
 
+(use-package inf-ruby
+  :ensure t)
+
+(use-package robe
+  :ensure t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -105,8 +111,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(modus-operandi-tinted))
  '(package-selected-packages
-   '(cape corfu evil go-mode magit marginalia orderless vertico web-mode
-	  yaml-mode)))
+   '(cape corfu evil go-mode inf-ruby magit marginalia orderless robe
+	  vertico web-mode yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
