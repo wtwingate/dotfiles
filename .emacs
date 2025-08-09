@@ -11,6 +11,9 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
+(unless (display-graphic-p)
+  (xterm-mouse-mode 1))
+
 (savehist-mode 1)
 (context-menu-mode 1)
 (which-key-mode 1)
