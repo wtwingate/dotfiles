@@ -87,6 +87,11 @@
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode))
+
 (use-package inf-ruby
   :ensure t)
 
@@ -117,8 +122,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(modus-operandi-tinted))
  '(package-selected-packages
-   '(cape corfu evil go-mode inf-ruby magit marginalia markdown-mode
-	  orderless robe vertico web-mode yaml-mode)))
+   '(cape corfu evil go-mode magit marginalia markdown-mode orderless
+	  robe vertico web-mode yaml-mode yasnippet)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
