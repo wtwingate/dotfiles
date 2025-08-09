@@ -84,6 +84,12 @@
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
+(use-package inf-ruby
+  :ensure t)
+
+(use-package robe
+  :ensure t)
+
 (use-package go-mode
   :ensure t)
 
@@ -98,10 +104,7 @@
 (use-package yaml-mode
   :ensure t)
 
-(use-package inf-ruby
-  :ensure t)
-
-(use-package robe
+(use-package markdown-mode
   :ensure t)
 
 (custom-set-variables
@@ -111,8 +114,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(modus-operandi-tinted))
  '(package-selected-packages
-   '(cape corfu evil go-mode inf-ruby magit marginalia orderless robe
-	  vertico web-mode yaml-mode)))
+   '(cape corfu evil go-mode inf-ruby magit marginalia markdown-mode
+	  orderless robe vertico web-mode yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
