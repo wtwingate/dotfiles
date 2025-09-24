@@ -65,6 +65,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Define keymaps
+vim.keymap.set({ "n", "v" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true })
+vim.keymap.set({ "n", "v" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true })
+vim.keymap.set({ "n", "v" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true })
+vim.keymap.set({ "n", "v" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true })
+
 -- Add packages
 vim.pack.add({
   "https://github.com/ellisonleao/gruvbox.nvim",
@@ -90,6 +96,7 @@ require("mason").setup()
 -- Enable LSP servers
 vim.lsp.enable({
   "clangd",
+  "herb_ls",
   "lua_ls",
   "pyright",
   "ruby_lsp",
