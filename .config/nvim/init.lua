@@ -117,13 +117,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Set up nvim-treesitter
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
+    "bash",
     "c",
+    "cpp",
+    "css",
+    "html",
+    "javascript",
+    "json",
     "lua",
     "markdown",
     "markdown_inline",
+    "python",
     "query",
+    "ruby",
     "vim",
     "vimdoc",
+    "yaml",
   },
   sync_install = false,
   auto_install = true,
