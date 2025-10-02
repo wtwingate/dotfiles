@@ -77,6 +77,7 @@ vim.pack.add({
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/mason-org/mason.nvim",
+  "https://github.com/mason-org/mason-lspconfig.nvim",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/nvim-mini/mini.nvim",
   "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -90,17 +91,18 @@ vim.pack.add({
   "https://github.com/tpope/vim-sleuth",
 })
 
--- Set up mason.nvim
+-- Set up LSP servers
 require("mason").setup()
-
--- Enable LSP servers
-vim.lsp.enable({
-  "clangd",
-  "herb_ls",
-  "lua_ls",
-  "pyright",
-  "ruby_lsp",
-  "vtsls",
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "clangd",
+    "emmet_language_server",
+    "herb_ls",
+    "lua_ls",
+    "pyright",
+    "ruby_lsp",
+    "vtsls",
+  },
 })
 
 -- Configure LSP client
