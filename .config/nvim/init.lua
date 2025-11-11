@@ -82,9 +82,10 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.nvim",
   "https://github.com/nvim-treesitter/nvim-treesitter",
   {
-    src = "https://github.com/Saghen/blink.cmp",
+    src = "https://github.com/saghen/blink.cmp",
     version = "v1.7.0",
   },
+  "https://github.com/saghen/blink.indent",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/tpope/vim-fugitive",
@@ -100,10 +101,11 @@ require("mason-lspconfig").setup({
     "herb_ls",
     "lua_ls",
     "pyright",
-    "ruby_lsp",
     "vtsls",
   },
 })
+
+vim.lsp.enable("ruby_lsp")
 
 -- Configure LSP client
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -151,6 +153,7 @@ require("nvim-treesitter.configs").setup({
 -- Set up mini.nvim
 require("mini.ai").setup()
 require("mini.icons").setup()
+require("mini.pairs").setup()
 require("mini.surround").setup()
 
 -- Set up blink.cmp
