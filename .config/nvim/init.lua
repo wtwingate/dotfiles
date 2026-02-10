@@ -33,6 +33,7 @@ vim.o.expandtab = true
 vim.o.wrap = true
 vim.o.linebreak = true
 vim.o.breakindent = true
+vim.o.colorcolumn = "80,120"
 
 -- Set search options
 vim.o.hlsearch = true
@@ -73,6 +74,7 @@ vim.keymap.set({ "n", "v" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up",
 
 -- Add packages
 vim.pack.add({
+  "https://github.com/catppuccin/nvim",
   "https://github.com/ellisonleao/gruvbox.nvim",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/lewis6991/gitsigns.nvim",
@@ -83,7 +85,7 @@ vim.pack.add({
   "https://github.com/nvim-treesitter/nvim-treesitter",
   {
     src = "https://github.com/saghen/blink.cmp",
-    version = "v1.7.0",
+    version = "v1.9.1",
   },
   "https://github.com/saghen/blink.indent",
   "https://github.com/stevearc/conform.nvim",
@@ -199,4 +201,4 @@ vim.keymap.set("n", "<Leader>fh", fzf.help_tags, { desc = "fzf help tags" })
 vim.keymap.set("n", "<Leader>fp", fzf.global, { desc = "fzf global" })
 
 -- Set color scheme
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("catppuccin")
