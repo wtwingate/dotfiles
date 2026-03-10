@@ -9,18 +9,21 @@ return {
       "mason-org/mason-lspconfig.nvim",
       opts = {
         ensure_installed = {
+          "basedpyright",
           "clangd",
           "emmet_language_server",
+          "gopls",
           "herb_ls",
           "lua_ls",
-          "pyright",
           "ruby_lsp",
+          "rust_analyzer",
           "vtsls",
         },
       },
     },
   },
   config = function()
+    -- Lua
     vim.lsp.config("lua_ls", {
       settings = {
         Lua = {
@@ -41,11 +44,22 @@ return {
       },
     })
 
+    -- Ruby
     vim.lsp.config("ruby_lsp", {
       mason = false,
       cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
     })
 
+    -- Go
+    vim.lsp.config("gopls", {
+      settings = {
+        gopls = {
+          semanticTokens = true,
+        },
+      },
+    })
+
+    -- Keymaps
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("my.lsp", { clear = true }),
       callback = function()
