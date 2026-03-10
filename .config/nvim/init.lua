@@ -56,9 +56,7 @@ vim.o.undodir = statedir .. "/undo//"
 -- Create autocommands
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = vim.api.nvim_create_augroup("my.vimrc", { clear = true }),
-  callback = function()
-    vim.hl.on_yank()
-  end,
+  callback = function() vim.hl.on_yank() end,
   desc = "Briefly highlight yanked text",
 })
 
