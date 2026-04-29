@@ -1,0 +1,14 @@
+# Vim shit
+*~
+*.un~
+*.swp
+tags
+
+# Emacs shit
+*~
+.#*
+\#*\#
+TAGS
+
+# Mac shit
+.DS_Store
