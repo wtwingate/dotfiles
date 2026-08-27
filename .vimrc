@@ -67,9 +67,13 @@ let maplocalleader="\\"
 " Enter mappings
 noremap j gj
 noremap gj j
-
 noremap k gk
 noremap gk k
+
+noremap <Leader>ff <Cmd>Files<CR>
+noremap <Leader>fg <Cmd>Rg<CR>
+noremap <Leader>fb <Cmd>Buffers<CR>
+noremap <Leader>fh <Cmd>Helptags<CR>
 
 " Set color scheme
 set termguicolors
