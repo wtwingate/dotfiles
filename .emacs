@@ -67,6 +67,9 @@
 (keymap-global-set "M-l" 'my-select-line)
 (keymap-global-set "S-<return>" 'my-open-line-below)
 (keymap-global-set "C-S-<return>" 'my-open-line-above)
+(keymap-global-set "C-c l" 'org-store-link)
+(keymap-global-set "C-c a" 'org-agenda)
+(keymap-global-set "C-c c" 'org-capture)
 
 ;; Add hooks
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
