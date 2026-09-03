@@ -37,9 +37,36 @@
         enable-recursive-minibuffers t
         backup-directory-alist '(("." . "~/.emacs.d/backups/")))
 
+;; Define functions
+(defun my-select-line ()
+  "Select the current line, or extend the selection downward."
+  (interactive)
+  (if (use-region-p)
+      (forward-line 1)
+    (push-mark (line-beginning-position) t t)
+    (forward-line 1)))
+
+(defun my-open-line-below ()
+  "Open line below the current line."
+  (interactive)
+  (end-of-line 1)
+  (open-line 1)
+  (forward-line 1)
+  (indent-according-to-mode))
+
+(defun my-open-line-above ()
+  "Open line above the current line."
+  (interactive)
+  (beginning-of-line 1)
+  (open-line 1)
+  (indent-according-to-mode))
+
 ;; Set global keymaps
 (keymap-global-set "M-o" 'other-window)
 (keymap-global-set "M-/" 'hippie-expand)
+(keymap-global-set "M-l" 'my-select-line)
+(keymap-global-set "S-<return>" 'my-open-line-below)
+(keymap-global-set "C-S-<return>" 'my-open-line-above)
 
 ;; Add hooks
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
